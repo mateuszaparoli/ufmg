@@ -1,0 +1,64 @@
+Questão1:
+
+Estrutura Semaforo {
+    int contador;
+    Mutex m;
+    VariavelCondicao v;
+}
+
+funcao init(Semaforo s, int val_inicial){
+    s.contador = val_inicial;
+}
+
+funcao up(Semaforo s){
+    s.m.lock();
+    s.contador++;
+    s.v.signal();
+    s.m.unlock();
+}
+
+funcao down(Semafoto s){
+    s.m.lock();
+
+    while (s.contador == 0){
+        s.v.wait(s.m);
+    }
+
+    s.contador--;
+    s.m.unlock();
+}
+
+
+Questão 2:
+
+int soma_atual;
+int limite;
+Mutex m;
+VariavelCondicao v;
+
+funcap init_access(int N) {
+    limite = N;
+    soma_atual = 0;
+}
+
+funcao access_file(){
+
+    int id = myID();
+    m.lock();
+    
+    while(soma_atual + id > limite) {
+        v.wait(m);
+    }
+
+    soma_atual -= id;
+    m.unlock();
+}
+
+funcao release_file(){
+    
+    int id = myID();
+    m.lock();
+    soma_atual -= id;
+    v.broadcast();
+    m.unlock();
+}

@@ -1,0 +1,41 @@
+%
+% After in_ord inserts an element into a sorted list, the list remains sorted.
+%
+inv_sort_thm : sorted L -> in_ord L E L' -> sorted L' -> type.
+%mode inv_sort_thm +D1 +D2 -D3.
+
+inv_sort_thm_nil : inv_sort_thm sorted_nil in_ord_nil sorted_one.
+
+inv_sort_thm_leq : inv_sort_thm SortedProof (in_ord_leq First) (sorted_con SortedProof First).
+
+inv_sort_thm_gth_nil : inv_sort_thm sorted_one (in_ord_gth in_ord_nil Second)
+                           (sorted_con sorted_one Rest)
+    <- inv_grt Second Rest.
+
+inv_sort_thm_gth_leq : inv_sort_thm (sorted_con SortTail HdLeq)
+                           (in_ord_gth (in_ord_leq ELeq) Grt)
+                           (sorted_con (sorted_con SortTail ELeq) LeqInv)
+    <- inv_grt Grt LeqInv.
+
+inv_sort_thm_gth_gth : inv_sort_thm (sorted_con SortTail LeqHd)
+                           (in_ord_gth (in_ord_gth Ins2 Grt2) Grt)
+                           (sorted_con SortIns LeqHd)
+    <- inv_sort_thm SortTail (in_ord_gth Ins2 Grt2) SortIns.
+
+%worlds () (inv_sort_thm _ _ _).
+%total D (inv_sort_thm D _ _).
+
+%
+% 'sort' sorts a list.
+%
+sort_thm : sort L L' -> sorted L' -> type.
+%mode sort_thm +SORT -SORTED.
+
+sort_thm_nil : sort_thm sort_nil sorted_nil.
+
+sort_thm_con : sort_thm (sort_con Ins SortProof) SortedOut
+    <- sort_thm SortProof SortedL''
+    <- inv_sort_thm SortedL'' Ins SortedOut.
+
+%worlds () (sort_thm _ _).
+%total D (sort_thm D _).

@@ -1,0 +1,63 @@
+[submodule "6_semestre/Compilers/Compilers_Course_Practical_Work"]
+	path = 6_semestre/Compilers/Compilers_Course_Practical_Work
+	url = https://github.com/mateuszaparoli/Compilers_Course_Practical_Work.git
+[submodule "6_semestre/Redes/TP1_backup"]
+	path = 6_semestre/Redes/TP1_backup
+	url = https://github.com/mateuszaparoli/TP_1_Redes.git
+[submodule "6_semestre/Redes/TP2_2023028560"]
+	path = 6_semestre/Redes/TP2_2023028560
+	url = https://github.com/mateuszaparoli/TP_2_Redes_UDP.git
+[submodule "6_semestre/SO/TP01 - Arquivos"]
+	path = 6_semestre/SO/TP01 - Arquivos
+	url = https://github.com/mateuszaparoli/TP_01_Sistemas_Operacionais.git
+[submodule "6_semestre/SO/TP_2_Mem_Virtual"]
+	path = 6_semestre/SO/TP_2_Mem_Virtual
+	url = https://github.com/mateuszaparoli/TP_2_Mem_Virtual.git
+[submodule "6_semestre/SoftwareEngeneering/Atividade_Didatica_1/micro-livraria"]
+	path = 6_semestre/SoftwareEngeneering/Atividade_Didatica_1/micro-livraria
+	url = https://github.com/mateuszaparoli/micro-livraria.git
+[submodule "6_semestre/SoftwareEngeneering/Atividade_Didatica_2/pub-sub-store"]
+	path = 6_semestre/SoftwareEngeneering/Atividade_Didatica_2/pub-sub-store
+	url = https://github.com/mateuszaparoli/pub-sub-store.git
+[submodule "6_semestre/SoftwareEngeneering/Atividade_Didatica_3/RoteiroRefactoringJS"]
+	path = 6_semestre/SoftwareEngeneering/Atividade_Didatica_3/RoteiroRefactoringJS
+	url = https://github.com/mateuszaparoli/RoteiroRefactoringJS.git
+[submodule "6_semestre/SoftwareEngeneering/FINAL_TP/TP1_EngenhariaDeSoftware"]
+	path = 6_semestre/SoftwareEngeneering/FINAL_TP/TP1_EngenhariaDeSoftware
+	url = https://github.com/mateuszaparoli/TP1_EngenhariaDeSoftware.git
+[submodule "6_semestre/SoftwareEngeneering/Lucao/esmforum"]
+	path = 6_semestre/SoftwareEngeneering/Lucao/esmforum
+	url = https://github.com/mtov/esmforum.git
+[submodule "6_semestre/SoftwareEngeneering/TP1_EngenhariaDeSoftware"]
+	path = 6_semestre/SoftwareEngeneering/TP1_EngenhariaDeSoftware
+	url = https://github.com/mateuszaparoli/TP1_EngenhariaDeSoftware.git
+[submodule "6_semestre/SoftwareEngeneering/TP_ES/TP1_EngenhariaDeSoftware"]
+	path = 6_semestre/SoftwareEngeneering/TP_ES/TP1_EngenhariaDeSoftware
+	url = https://github.com/mateuszaparoli/TP1_EngenhariaDeSoftware.git
+[submodule "7_semestre/IIA/tp2"]
+	path = 7_semestre/IIA/tp2
+	url = https://github.com/mateuszaparoli/tp2_IIA.git
+[submodule "7_semestre/IIA/tp_1_ricardo/intro_ia_tp1"]
+	path = 7_semestre/IIA/tp_1_ricardo/intro_ia_tp1
+	url = https://github.com/ricardo007230/intro_ia_tp1.git
+[submodule "7_semestre/cml/projeto final"]
+	path = 7_semestre/cml/projeto final
+	url = https://github.com/mateuszaparoli/analise_cml.git
+[submodule "7_semestre/fspd/ex_1_prog_fspd"]
+	path = 7_semestre/fspd/ex_1_prog_fspd
+	url = https://github.com/mateuszaparoli/ex_1_fspd.git
+[submodule "7_semestre/spa/spa_vpls"]
+	path = 7_semestre/spa/spa_vpls
+	url = https://github.com/mateuszaparoli/spa_vpls.git
+[submodule "8_semestre/HEM"]
+	path = 8_semestre/HEM
+	url = https://github.com/mateuszaparoli/HEM_8_periodo.git
+[submodule "8_semestre/SMT"]
+	path = 8_semestre/SMT
+	url = https://github.com/mateuszaparoli/SMT.git
+[submodule "8_semestre/Teste de Software"]
+	path = 8_semestre/Teste de Software
+	url = https://github.com/mateuszaparoli/Seminario-Teste-de-Software.git
+[submodule "Arquivos"]
+	path = Arquivos
+	url = https://github.com/mateuszaparoli/Computer-Science-Course.git

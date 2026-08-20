@@ -1,0 +1,76 @@
+syntax = "proto3";
+
+package sistema_distribuido;
+
+// ============================================================================
+// SERVIÇO 1: Servidor de Pares (Chave, Valor)
+// ============================================================================
+service ServidorPares {
+    rpc Insercao (InsercaoRequest) returns (InsercaoResponse);
+    rpc Consulta (ConsultaRequest) returns (ConsultaResponse);
+    rpc Activacao (ActivacaoRequest) returns (ActivacaoResponse);
+    rpc Termino (TerminoParesRequest) returns (TerminoParesResponse);
+}
+
+message InsercaoRequest {
+    int32 chave = 1;
+    string valor = 2; // Tamanho máximo de 4096 caracteres (4KB)
+}
+
+message InsercaoResponse {
+    int32 status = 1; // Retorna 0 (sucesso) ou -1 (chave já existe)
+}
+
+message ConsultaRequest {
+    int32 chave = 1;
+}
+
+message ConsultaResponse {
+    string valor = 1; // Retorna o conteúdo associado ou string nulo/vazio
+}
+
+message ActivacaoRequest {
+    string identificador_servico = 1; // "host:porto" do servidor central
+}
+
+message ActivacaoResponse {
+    int32 status = 1; // Número de chaves informadas ao centralizador ou 0 no modo 1
+}
+
+message TerminoParesRequest {}
+
+message TerminoParesResponse {
+    int32 chaves_definidas = 1; // Número de chaves definidas durante a execução
+}
+
+// ============================================================================
+// SERVIÇO 2: Servidor Centralizador (Estilo Napster)
+// ============================================================================
+service ServidorCentral {
+    rpc Registro (RegistroRequest) returns (RegistroResponse);
+    rpc Mapeamento (MapeamentoRequest) returns (MapeamentoResponse);
+    rpc Termino (TerminoCentralRequest) returns (TerminoCentralResponse);
+}
+
+message RegistroRequest {
+    string identificador_servico = 1; // "host:porto" do servidor de pares
+    repeated int32 chaves = 2;          // Lista com todas as chaves armazenadas
+}
+
+message RegistroResponse {
+    int32 chaves_processadas = 1; // Número de chaves que foram processadas
+}
+
+message MapeamentoRequest {
+    int32 chave = 1;
+}
+
+message MapeamentoResponse {
+    string identificador_servico = 1; // "host:porto" do servidor responsável ou vazio
+}
+
+message TerminoCentralRequest {}
+
+message TerminoCentralResponse {
+    int32 chaves_registradas = 1; // Número de chaves registradas no momento do término
+}

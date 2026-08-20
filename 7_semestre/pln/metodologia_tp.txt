@@ -1,0 +1,23 @@
+\section{Metodologia}
+
+Dividiremos a execução do trabalho em quatro partes principais focadas na avaliação de estratégias de fusão para o cenário de XMTC
+
+\subsection{Preparação e Baseline}
+Inicialmente selecionaremos datasets de referência na literatura para XMTC(como Wiki10-31K) que se caracterizam por um espaço de rótulos extremamente grande e uma distribuição long-tail acentuada. Para o pré-processamento faremos a tokenização e representação dos documentos em dois formatos: esparsa e densa, a primeira baseada em frequência de termos e a segunda em embeddings de modelos de linguagem pré-treinados. A seguir faremos os primeiros experimentos: implementar uma fusão básica de rankings para servir como baseline para as técnicas posteriores
+
+\subsection{Implementação de algorimos de Fusão}
+Com base no pipeline xCoRetriev implementaremos trê tipos de algoritmos avançados de fusão de rankings: 
+\begin{itemize}
+\item Reciprocal Rank Fusion (RRF): Método que combina rankings priorizando itens que aparecem consistentemente no topo de múltiplas listas.
+
+\item Combiações Ponderadas: Método que atribui pesos diferentes para recuperadores esparsos e densos buscando trade-off ideal entre precisão em head labels e o recall em tail labels
+
+\item Fusão Adaptativa: Método que a depender das características da consulta ajusta o peso da funsão com base no tamanho do texto de entrada ou no nível de ambiguidade lexical identificado nele.
+
+\end{itemize}
+
+\subsection{Avaliação de Desempenho e Métricas}
+Usaremos métricas padrão e bem estabelecidas para a avaliação da eficácea dos métodos como Precision e Recall.
+
+\subsection{Análise de Eficiência e Robustez}
+Por fim, realizaremos uma análise qualitativa e quantitativa da robustez dos algoritmos frente ao ruído introduzido por documentos irrelevantes. A eficiência mediremos pelo tempo de inferência necessário para processar a fusão de rankings em larga escala.

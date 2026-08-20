@@ -1,0 +1,74 @@
+Questão 1:
+
+a) (o, gato), (gato, o), (gato, bebe), (bebe, gato), (bebe, leite), (leite, bebe)
+
+b) Ele aprende a probabilidade de ocorrer a palavra do contexto, dado que centro é a palavra central, ou seja, caso fosse P(gato|bebe) ao maximizar isso ele obteria a probabilidade de gato aparecer no contexto caso a palavra central fosse bebe.
+   
+c)  Pois os vetores de cada palavra representam os contextos em que elas apareceram ou seja quais palavras aparecem junto com cada uma, no nosso caso, a porcentagem de 'leite' aparecer sendo que temos a palavra 'bebe' no contexto por exemplo. E sabendo as palavras do contexto e considerando a hipótese de que conhecemos uma palavra pelo seus cizinhos, ao fazermos o produto interno desses vetores temos a proximidade entre os vizinhos das palavras ou seja a proximidade entre as palavras em si. Matematicamente, o produto interno é a similaridade entre dois vetores, ou seja aqui usamos o produto interno para calcular a similaridade entre os embeddings das palavras.
+
+d) A definição da janela de contexto é o numero de palavras vizinha que o algoritmo tenta prever a partir da palavra central seja à diretia ou à esquerda, ou seja no nosso caso, a palavra "o" só tem como vizinho "gato" assim como a palavra "leite" só tem como vizinho a palavra "bebe", a janela de contexto não é circular no texto por isso o par (leite, o) não aparece.
+
+e) Nesse caso teriamos dois pares de palavras que teriam os embeddings mais semelhantes, 'o' e 'bebe', e 'gato' e 'leite' pois tanto 'o' como 'bebe' têm uma palabra em comum em seus contextos que seria 'gato' e algo semelhante ocorre com 'gato' e 'leite' que teriam 'bebe' em seu contexto, nesse caso os embeddings entre as palavras desses pares seriam identicamente semelhantes no nosso contexto.
+
+
+Questão 2:
+
+a) J(\theta) 
+
+b) Ela aparece como um produto porque o que estamos fazendo é assumindo que os a ocorrencia de uma palavra no contexto não depende das outras palavras do contexto e então para calcularmos a probabilidade das palavras ocorrerem juntas é o produto das probabilidades de cada palavra do contexto ocorrer dadss respectivas palavras centrais.
+
+c) J'(theta)
+
+d) Pois nela os produtórios viram somas e é mais facil maximizar somas do que produtos em parte porque calcular as derivadas se torna mais fácil. Além disso, aplicando o log estamos tratando somas que tem valores absolutos maiores e evitando o underflow de multiplicar muitos números muito pequenos, assim preservamos nossos valores dos embeddings e temos uma confiança maior no resultado da otimização.
+
+
+Questão 3:
+
+a) O numerador tem o papel de calcular o a similaridade entre os vetores da palavra wo e wc.
+
+b) O denominador tem o papel de normalizar diante do vocabulário enteiro para assim obtermos uma distribuição de probablididades.
+
+c) Se o produto interno aummenta, ou seja os vetores são mais semelhantes a probabilidade aumenta.
+
+d) Porque quanto maior o vocabulários mais termos o denominador da função vai ter.
+
+
+Questão 4:
+
+a) A principal diferença é que o Skip-gram usa uma palavra para tentar prever as palavras do seu contexto, enquanto que o CBOW tenta, a partir de palvras do contexto prever uma palavra alvo.
+
+b) No CBOW usamos a média dos vetores do contexto, os somando, para fazer uma previsão da palavra central
+
+c) O CBOW tende a ser mais rápido, uma vez que para cada palavra, em uma janela de tamanho 4 por exemplo apenas fazemos a média, ou seja, somamos, 4 vetores para prever a palavra central, enquanto que para o skip-gram para cada palavra dessa janela calculariamos sua probabilidade a partir da palavra central
+
+d) O Skip-gram é preferivel quando precisamos aprender a respeito de palavras pouco presentes ou jargões que no caso do CBOW se perderiam em meio a palavras muito frequntes e não aprenderiamos sobre elas.
+
+e) Com muitas palavras raras o Skip-gram tende a aprender palavras melhores pois o CBOW ao fazer as médias dos vetores do contexto não extrai tanta informação a respeito de palavras raras. Já o Skip-gram com vários calculos para cada palavra tende a aprender embeddings melhores sobre elas.
+
+
+Questão 5:
+
+a) A perda diminui pois a probabilidade cresce conforme o produto interno dos vetorescresce e estando mais próximos os vetores a perda é menor, o que pode ser visto pelo sinal negativo na equação.
+
+b) Palavras que aparecem frequentemente juntas devem ter vetores próximos e perdas menores.
+
+c) Palavras que aprecerem raramente juntas devem ter vetores muito distantes e a probabilidade tenderá a zero.
+
+
+Questão 6:
+
+a) Para o backpropagation primeiramente fazemos o passo forward para obter os vetores de erro, na posse deles, executamos o backpropagation onde calculamos as derivadas parciais em relação a cada vetor da matriz de contexto e da matriz de centro e na posse dessas derivadas usamos o algoritmo de gradiente descendente para atualizar os embeddings.
+
+b) É um vetor que contém as derivadas parciais da função de perda em relação a cada um dos embeddings.
+
+c) Porque, a partir de valores arbitrariamente definidos, iterativamente otimizamos os valores desses vetores a fim de obter os padrões presentes nos dados de treinamento.
+
+d) Na posse do gradiente sabemos para qual direção o erro cresce, então invertemos o sinal, multiplicamos esse valor por uma taxa de aprendizado e somamos ao vetor atual, a fim de atualizar os pesos e minimizar o erro.
+
+
+Questão 7: fotos  na pasta.
+
+
+Questão 8:
+
+a)  
