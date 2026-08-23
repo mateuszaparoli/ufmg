@@ -1,0 +1,182 @@
+[
+  {
+    "kernel": "gemm",
+    "unroll_factor": 1,
+    "resources": {
+      "target_hardware": "Xilinx UltraScale+ VU9P",
+      "unroll_factor": 1,
+      "luts": 1230,
+      "dsps": 5,
+      "flip_flops": 2460,
+      "bram_18k": 4,
+      "fmax_mhz": 441.5,
+      "operations_per_cycle": 2,
+      "peak_gflops": 0.88
+    }
+  },
+  {
+    "kernel": "gemm",
+    "unroll_factor": 4,
+    "resources": {
+      "target_hardware": "Xilinx UltraScale+ VU9P",
+      "unroll_factor": 4,
+      "luts": 4920,
+      "dsps": 20,
+      "flip_flops": 9840,
+      "bram_18k": 16,
+      "fmax_mhz": 416.0,
+      "operations_per_cycle": 8,
+      "peak_gflops": 3.33
+    }
+  },
+  {
+    "kernel": "gemm",
+    "unroll_factor": 8,
+    "resources": {
+      "target_hardware": "Xilinx UltraScale+ VU9P",
+      "unroll_factor": 8,
+      "luts": 9840,
+      "dsps": 40,
+      "flip_flops": 19680,
+      "bram_18k": 32,
+      "fmax_mhz": 382.0,
+      "operations_per_cycle": 16,
+      "peak_gflops": 6.11
+    }
+  },
+  {
+    "kernel": "stencil2d",
+    "unroll_factor": 1,
+    "resources": {
+      "target_hardware": "Xilinx UltraScale+ VU9P",
+      "unroll_factor": 1,
+      "luts": 1310,
+      "dsps": 5,
+      "flip_flops": 2620,
+      "bram_18k": 6,
+      "fmax_mhz": 441.5,
+      "operations_per_cycle": 2,
+      "peak_gflops": 0.88
+    }
+  },
+  {
+    "kernel": "stencil2d",
+    "unroll_factor": 4,
+    "resources": {
+      "target_hardware": "Xilinx UltraScale+ VU9P",
+      "unroll_factor": 4,
+      "luts": 5240,
+      "dsps": 20,
+      "flip_flops": 10480,
+      "bram_18k": 24,
+      "fmax_mhz": 416.0,
+      "operations_per_cycle": 8,
+      "peak_gflops": 3.33
+    }
+  },
+  {
+    "kernel": "stencil2d",
+    "unroll_factor": 8,
+    "resources": {
+      "target_hardware": "Xilinx UltraScale+ VU9P",
+      "unroll_factor": 8,
+      "luts": 10480,
+      "dsps": 40,
+      "flip_flops": 20960,
+      "bram_18k": 48,
+      "fmax_mhz": 382.0,
+      "operations_per_cycle": 16,
+      "peak_gflops": 6.11
+    }
+  },
+  {
+    "kernel": "atax",
+    "unroll_factor": 1,
+    "resources": {
+      "target_hardware": "Xilinx UltraScale+ VU9P",
+      "unroll_factor": 1,
+      "luts": 1230,
+      "dsps": 5,
+      "flip_flops": 2460,
+      "bram_18k": 4,
+      "fmax_mhz": 441.5,
+      "operations_per_cycle": 2,
+      "peak_gflops": 0.88
+    }
+  },
+  {
+    "kernel": "atax",
+    "unroll_factor": 4,
+    "resources": {
+      "target_hardware": "Xilinx UltraScale+ VU9P",
+      "unroll_factor": 4,
+      "luts": 4920,
+      "dsps": 20,
+      "flip_flops": 9840,
+      "bram_18k": 16,
+      "fmax_mhz": 416.0,
+      "operations_per_cycle": 8,
+      "peak_gflops": 3.33
+    }
+  },
+  {
+    "kernel": "atax",
+    "unroll_factor": 8,
+    "resources": {
+      "target_hardware": "Xilinx UltraScale+ VU9P",
+      "unroll_factor": 8,
+      "luts": 9840,
+      "dsps": 40,
+      "flip_flops": 19680,
+      "bram_18k": 32,
+      "fmax_mhz": 382.0,
+      "operations_per_cycle": 16,
+      "peak_gflops": 6.11
+    }
+  },
+  {
+    "kernel": "2mm",
+    "unroll_factor": 1,
+    "resources": {
+      "target_hardware": "Xilinx UltraScale+ VU9P",
+      "unroll_factor": 1,
+      "luts": 2300,
+      "dsps": 10,
+      "flip_flops": 4600,
+      "bram_18k": 4,
+      "fmax_mhz": 441.5,
+      "operations_per_cycle": 4,
+      "peak_gflops": 1.77
+    }
+  },
+  {
+    "kernel": "2mm",
+    "unroll_factor": 4,
+    "resources": {
+      "target_hardware": "Xilinx UltraScale+ VU9P",
+      "unroll_factor": 4,
+      "luts": 9200,
+      "dsps": 40,
+      "flip_flops": 18400,
+      "bram_18k": 16,
+      "fmax_mhz": 416.0,
+      "operations_per_cycle": 16,
+      "peak_gflops": 6.66
+    }
+  },
+  {
+    "kernel": "2mm",
+    "unroll_factor": 8,
+    "resources": {
+      "target_hardware": "Xilinx UltraScale+ VU9P",
+      "unroll_factor": 8,
+      "luts": 18400,
+      "dsps": 80,
+      "flip_flops": 36800,
+      "bram_18k": 32,
+      "fmax_mhz": 382.0,
+      "operations_per_cycle": 32,
+      "peak_gflops": 12.22
+    }
+  }
+]

@@ -1,0 +1,13 @@
+{
+  "symm_diagnosis": {
+    "bug_id": "LAC-MLIR-SYMM-01",
+    "benchmark": "linear-algebra/kernels/symm",
+    "excluded_in": "LaC_TechReport022026.pdf (Section 4.1, Page 6)",
+    "conflicting_pass": "-affine-loop-fusion & -affine-scalrep",
+    "root_cause_analysis": "In PolyBench/C symm, the inner loop updates both C[i][j] and C[k][j] across a triangular iteration domain (k from 0 to i). Polygeist raised this into two sequential affine.for nests with non-canonical induction variable bindings. When `-affine-loop-fusion` runs greedily, it attempts to fuse the symmetric lower-triangular accumulator with the rectangular update, violating affine dependence distances and generating an ill-formed schedule tree.",
+    "solution": "1. Isolate the symmetric accumulation into a normalized rectangular domain using affine_map.\n2. Remove -affine-loop-fusion specifically for triangular matrix updates or apply loop skewing first.\n3. Use explicit induction variable normalization before running -affine-scalrep."
+  },
+  "total_fuzzed": 50,
+  "passed": 50,
+  "anomalies": []
+}

@@ -1,0 +1,6512 @@
+{
+  "kernel": "gemm",
+  "baseline_clang_o0_speedup": 1.0,
+  "static_kiriko_mlir_speedup": 1.513,
+  "random_search_best_speedup": 15.045,
+  "genetic_algorithm_best_speedup": 15.908,
+  "bayesian_optimization_best_speedup": 14.667,
+  "bayesian_best_params": {
+    "tile_size_l1": 64,
+    "tile_size_k": 4,
+    "unroll_factor": 16,
+    "enable_fusion": true,
+    "enable_scalrep": true,
+    "enable_coalescing": false,
+    "enable_super_vectorize": true,
+    "vector_width": 512
+  },
+  "bayes_history": [
+    {
+      "trial": 0,
+      "speedup": 4.958,
+      "runtime_ms": 90.766,
+      "config": {
+        "tile_size_l1": 8,
+        "tile_size_l2": 64,
+        "tile_size_k": 64,
+        "unroll_factor": 8,
+        "enable_fusion": false,
+        "enable_scalrep": false,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 256,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=8",
+        "-affine-loop-unroll=unroll-factor=8",
+        "-affine-super-vectorize=virtual-vector-size=4"
+      ]
+    },
+    {
+      "trial": 1,
+      "speedup": 4.421,
+      "runtime_ms": 101.797,
+      "config": {
+        "tile_size_l1": 64,
+        "tile_size_l2": 64,
+        "tile_size_k": 256,
+        "unroll_factor": 2,
+        "enable_fusion": false,
+        "enable_scalrep": false,
+        "enable_coalescing": true,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=64",
+        "-affine-loop-unroll=unroll-factor=2",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "trial": 2,
+      "speedup": 1.754,
+      "runtime_ms": 256.574,
+      "config": {
+        "tile_size_l1": 16,
+        "tile_size_l2": 64,
+        "tile_size_k": 16,
+        "unroll_factor": 4,
+        "enable_fusion": false,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": false,
+        "vector_width": 256,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=16",
+        "-affine-loop-unroll=unroll-factor=4",
+        "-affine-scalrep"
+      ]
+    },
+    {
+      "trial": 3,
+      "speedup": 1.877,
+      "runtime_ms": 239.724,
+      "config": {
+        "tile_size_l1": 64,
+        "tile_size_l2": 64,
+        "tile_size_k": 64,
+        "unroll_factor": 1,
+        "enable_fusion": false,
+        "enable_scalrep": false,
+        "enable_coalescing": true,
+        "enable_super_vectorize": true,
+        "vector_width": 256,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=64",
+        "-affine-super-vectorize=virtual-vector-size=4"
+      ]
+    },
+    {
+      "trial": 4,
+      "speedup": 1.177,
+      "runtime_ms": 382.184,
+      "config": {
+        "tile_size_l1": 8,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 1,
+        "enable_fusion": true,
+        "enable_scalrep": false,
+        "enable_coalescing": true,
+        "enable_super_vectorize": false,
+        "vector_width": 128,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=8",
+        "-affine-loop-fusion"
+      ]
+    },
+    {
+      "trial": 5,
+      "speedup": 1.161,
+      "runtime_ms": 387.611,
+      "config": {
+        "tile_size_l1": 64,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 2,
+        "enable_fusion": false,
+        "enable_scalrep": false,
+        "enable_coalescing": false,
+        "enable_super_vectorize": false,
+        "vector_width": 256,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=64",
+        "-affine-loop-unroll=unroll-factor=2"
+      ]
+    },
+    {
+      "trial": 6,
+      "speedup": 0.912,
+      "runtime_ms": 493.296,
+      "config": {
+        "tile_size_l1": 16,
+        "tile_size_l2": 64,
+        "tile_size_k": 128,
+        "unroll_factor": 8,
+        "enable_fusion": true,
+        "enable_scalrep": false,
+        "enable_coalescing": true,
+        "enable_super_vectorize": false,
+        "vector_width": 128,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=16",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=8"
+      ]
+    },
+    {
+      "trial": 7,
+      "speedup": 4.42,
+      "runtime_ms": 101.804,
+      "config": {
+        "tile_size_l1": 64,
+        "tile_size_l2": 64,
+        "tile_size_k": 16,
+        "unroll_factor": 4,
+        "enable_fusion": false,
+        "enable_scalrep": false,
+        "enable_coalescing": true,
+        "enable_super_vectorize": true,
+        "vector_width": 256,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=64",
+        "-affine-loop-unroll=unroll-factor=4",
+        "-affine-super-vectorize=virtual-vector-size=4"
+      ]
+    },
+    {
+      "trial": 8,
+      "speedup": 3.02,
+      "runtime_ms": 149.003,
+      "config": {
+        "tile_size_l1": 8,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 4,
+        "enable_fusion": false,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 128,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=8",
+        "-affine-loop-unroll=unroll-factor=4",
+        "-affine-scalrep",
+        "-affine-super-vectorize=virtual-vector-size=2"
+      ]
+    },
+    {
+      "trial": 9,
+      "speedup": 1.149,
+      "runtime_ms": 391.547,
+      "config": {
+        "tile_size_l1": 32,
+        "tile_size_l2": 64,
+        "tile_size_k": 32,
+        "unroll_factor": 1,
+        "enable_fusion": true,
+        "enable_scalrep": false,
+        "enable_coalescing": true,
+        "enable_super_vectorize": false,
+        "vector_width": 256,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=32",
+        "-affine-loop-fusion"
+      ]
+    },
+    {
+      "trial": 10,
+      "speedup": 4.883,
+      "runtime_ms": 92.149,
+      "config": {
+        "tile_size_l1": 4,
+        "tile_size_l2": 64,
+        "tile_size_k": 16,
+        "unroll_factor": 8,
+        "enable_fusion": false,
+        "enable_scalrep": false,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 256,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=4",
+        "-affine-loop-unroll=unroll-factor=8",
+        "-affine-super-vectorize=virtual-vector-size=4"
+      ]
+    },
+    {
+      "trial": 11,
+      "speedup": 4.896,
+      "runtime_ms": 91.907,
+      "config": {
+        "tile_size_l1": 4,
+        "tile_size_l2": 64,
+        "tile_size_k": 16,
+        "unroll_factor": 8,
+        "enable_fusion": false,
+        "enable_scalrep": false,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 256,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=4",
+        "-affine-loop-unroll=unroll-factor=8",
+        "-affine-super-vectorize=virtual-vector-size=4"
+      ]
+    },
+    {
+      "trial": 12,
+      "speedup": 4.898,
+      "runtime_ms": 91.869,
+      "config": {
+        "tile_size_l1": 8,
+        "tile_size_l2": 64,
+        "tile_size_k": 64,
+        "unroll_factor": 8,
+        "enable_fusion": false,
+        "enable_scalrep": false,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 256,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=8",
+        "-affine-loop-unroll=unroll-factor=8",
+        "-affine-super-vectorize=virtual-vector-size=4"
+      ]
+    },
+    {
+      "trial": 13,
+      "speedup": 4.633,
+      "runtime_ms": 97.119,
+      "config": {
+        "tile_size_l1": 8,
+        "tile_size_l2": 64,
+        "tile_size_k": 64,
+        "unroll_factor": 16,
+        "enable_fusion": false,
+        "enable_scalrep": false,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 256,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=8",
+        "-affine-loop-unroll=unroll-factor=16",
+        "-affine-super-vectorize=virtual-vector-size=4"
+      ]
+    },
+    {
+      "trial": 14,
+      "speedup": 3.691,
+      "runtime_ms": 121.907,
+      "config": {
+        "tile_size_l1": 128,
+        "tile_size_l2": 64,
+        "tile_size_k": 64,
+        "unroll_factor": 8,
+        "enable_fusion": false,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 256,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=128",
+        "-affine-loop-unroll=unroll-factor=8",
+        "-affine-scalrep",
+        "-affine-super-vectorize=virtual-vector-size=4"
+      ]
+    },
+    {
+      "trial": 15,
+      "speedup": 2.413,
+      "runtime_ms": 186.451,
+      "config": {
+        "tile_size_l1": 8,
+        "tile_size_l2": 64,
+        "tile_size_k": 64,
+        "unroll_factor": 8,
+        "enable_fusion": false,
+        "enable_scalrep": false,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 128,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=8",
+        "-affine-loop-unroll=unroll-factor=8",
+        "-affine-super-vectorize=virtual-vector-size=2"
+      ]
+    },
+    {
+      "trial": 16,
+      "speedup": 4.804,
+      "runtime_ms": 93.667,
+      "config": {
+        "tile_size_l1": 8,
+        "tile_size_l2": 64,
+        "tile_size_k": 8,
+        "unroll_factor": 8,
+        "enable_fusion": false,
+        "enable_scalrep": false,
+        "enable_coalescing": true,
+        "enable_super_vectorize": true,
+        "vector_width": 256,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=8",
+        "-affine-loop-unroll=unroll-factor=8",
+        "-affine-super-vectorize=virtual-vector-size=4"
+      ]
+    },
+    {
+      "trial": 17,
+      "speedup": 6.263,
+      "runtime_ms": 71.849,
+      "config": {
+        "tile_size_l1": 256,
+        "tile_size_l2": 64,
+        "tile_size_k": 64,
+        "unroll_factor": 8,
+        "enable_fusion": true,
+        "enable_scalrep": false,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=256",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=8",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "trial": 18,
+      "speedup": 5.696,
+      "runtime_ms": 78.996,
+      "config": {
+        "tile_size_l1": 256,
+        "tile_size_l2": 64,
+        "tile_size_k": 64,
+        "unroll_factor": 4,
+        "enable_fusion": true,
+        "enable_scalrep": false,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=256",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=4",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "trial": 19,
+      "speedup": 7.654,
+      "runtime_ms": 58.795,
+      "config": {
+        "tile_size_l1": 256,
+        "tile_size_l2": 64,
+        "tile_size_k": 64,
+        "unroll_factor": 4,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=256",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=4",
+        "-affine-scalrep",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "trial": 20,
+      "speedup": 13.671,
+      "runtime_ms": 32.916,
+      "config": {
+        "tile_size_l1": 256,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 4,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": true,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=256",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=4",
+        "-affine-scalrep",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "trial": 21,
+      "speedup": 14.508,
+      "runtime_ms": 31.018,
+      "config": {
+        "tile_size_l1": 256,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 16,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": true,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=256",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=16",
+        "-affine-scalrep",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "trial": 22,
+      "speedup": 12.094,
+      "runtime_ms": 37.208,
+      "config": {
+        "tile_size_l1": 256,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 2,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": true,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=256",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=2",
+        "-affine-scalrep",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "trial": 23,
+      "speedup": 12.272,
+      "runtime_ms": 36.669,
+      "config": {
+        "tile_size_l1": 256,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 2,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": true,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=256",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=2",
+        "-affine-scalrep",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "trial": 24,
+      "speedup": 1.7,
+      "runtime_ms": 264.678,
+      "config": {
+        "tile_size_l1": 256,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 4,
+        "enable_fusion": false,
+        "enable_scalrep": true,
+        "enable_coalescing": true,
+        "enable_super_vectorize": false,
+        "vector_width": 512,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=256",
+        "-affine-loop-unroll=unroll-factor=4",
+        "-affine-scalrep"
+      ]
+    },
+    {
+      "trial": 25,
+      "speedup": 13.983,
+      "runtime_ms": 32.181,
+      "config": {
+        "tile_size_l1": 16,
+        "tile_size_l2": 64,
+        "tile_size_k": 64,
+        "unroll_factor": 16,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": true,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=16",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=16",
+        "-affine-scalrep",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "trial": 26,
+      "speedup": 12.688,
+      "runtime_ms": 35.466,
+      "config": {
+        "tile_size_l1": 16,
+        "tile_size_l2": 64,
+        "tile_size_k": 8,
+        "unroll_factor": 16,
+        "enable_fusion": false,
+        "enable_scalrep": true,
+        "enable_coalescing": true,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=16",
+        "-affine-loop-unroll=unroll-factor=16",
+        "-affine-scalrep",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "trial": 27,
+      "speedup": 7.183,
+      "runtime_ms": 62.651,
+      "config": {
+        "tile_size_l1": 16,
+        "tile_size_l2": 64,
+        "tile_size_k": 64,
+        "unroll_factor": 16,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": true,
+        "enable_super_vectorize": true,
+        "vector_width": 256,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=16",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=16",
+        "-affine-scalrep",
+        "-affine-super-vectorize=virtual-vector-size=4"
+      ]
+    },
+    {
+      "trial": 28,
+      "speedup": 14.529,
+      "runtime_ms": 30.973,
+      "config": {
+        "tile_size_l1": 64,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 16,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=64",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=16",
+        "-affine-scalrep",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "trial": 29,
+      "speedup": 14.356,
+      "runtime_ms": 31.345,
+      "config": {
+        "tile_size_l1": 64,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 16,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=64",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=16",
+        "-affine-scalrep",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "trial": 30,
+      "speedup": 2.026,
+      "runtime_ms": 222.12,
+      "config": {
+        "tile_size_l1": 64,
+        "tile_size_l2": 64,
+        "tile_size_k": 128,
+        "unroll_factor": 16,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 128,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=64",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=16",
+        "-affine-scalrep",
+        "-affine-super-vectorize=virtual-vector-size=2"
+      ]
+    },
+    {
+      "trial": 31,
+      "speedup": 2.118,
+      "runtime_ms": 212.418,
+      "config": {
+        "tile_size_l1": 64,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 16,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": true,
+        "enable_super_vectorize": false,
+        "vector_width": 512,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=64",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=16",
+        "-affine-scalrep"
+      ]
+    },
+    {
+      "trial": 32,
+      "speedup": 14.637,
+      "runtime_ms": 30.744,
+      "config": {
+        "tile_size_l1": 32,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 16,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=32",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=16",
+        "-affine-scalrep",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "trial": 33,
+      "speedup": 14.361,
+      "runtime_ms": 31.334,
+      "config": {
+        "tile_size_l1": 32,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 16,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=32",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=16",
+        "-affine-scalrep",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "trial": 34,
+      "speedup": 2.045,
+      "runtime_ms": 220.026,
+      "config": {
+        "tile_size_l1": 32,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 4,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": false,
+        "vector_width": 512,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=32",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=4",
+        "-affine-scalrep"
+      ]
+    },
+    {
+      "trial": 35,
+      "speedup": 12.282,
+      "runtime_ms": 36.64,
+      "config": {
+        "tile_size_l1": 32,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 16,
+        "enable_fusion": false,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=32",
+        "-affine-loop-unroll=unroll-factor=16",
+        "-affine-scalrep",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "trial": 36,
+      "speedup": 3.569,
+      "runtime_ms": 126.097,
+      "config": {
+        "tile_size_l1": 32,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 16,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": true,
+        "enable_super_vectorize": true,
+        "vector_width": 128,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=32",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=16",
+        "-affine-scalrep",
+        "-affine-super-vectorize=virtual-vector-size=2"
+      ]
+    },
+    {
+      "trial": 37,
+      "speedup": 5.826,
+      "runtime_ms": 77.236,
+      "config": {
+        "tile_size_l1": 8,
+        "tile_size_l2": 64,
+        "tile_size_k": 256,
+        "unroll_factor": 1,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=8",
+        "-affine-loop-fusion",
+        "-affine-scalrep",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "trial": 38,
+      "speedup": 12.162,
+      "runtime_ms": 37.001,
+      "config": {
+        "tile_size_l1": 32,
+        "tile_size_l2": 64,
+        "tile_size_k": 8,
+        "unroll_factor": 2,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=32",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=2",
+        "-affine-scalrep",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "trial": 39,
+      "speedup": 1.527,
+      "runtime_ms": 294.76,
+      "config": {
+        "tile_size_l1": 256,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 16,
+        "enable_fusion": true,
+        "enable_scalrep": false,
+        "enable_coalescing": false,
+        "enable_super_vectorize": false,
+        "vector_width": 512,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=256",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=16"
+      ]
+    },
+    {
+      "trial": 40,
+      "speedup": 3.99,
+      "runtime_ms": 112.789,
+      "config": {
+        "tile_size_l1": 128,
+        "tile_size_l2": 64,
+        "tile_size_k": 32,
+        "unroll_factor": 16,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 256,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=128",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=16",
+        "-affine-scalrep",
+        "-affine-super-vectorize=virtual-vector-size=4"
+      ]
+    },
+    {
+      "trial": 41,
+      "speedup": 14.667,
+      "runtime_ms": 30.681,
+      "config": {
+        "tile_size_l1": 64,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 16,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=64",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=16",
+        "-affine-scalrep",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "trial": 42,
+      "speedup": 10.608,
+      "runtime_ms": 42.42,
+      "config": {
+        "tile_size_l1": 32,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 16,
+        "enable_fusion": true,
+        "enable_scalrep": false,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=32",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=16",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "trial": 43,
+      "speedup": 7.65,
+      "runtime_ms": 58.82,
+      "config": {
+        "tile_size_l1": 32,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 8,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 256,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=32",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=8",
+        "-affine-scalrep",
+        "-affine-super-vectorize=virtual-vector-size=4"
+      ]
+    },
+    {
+      "trial": 44,
+      "speedup": 14.155,
+      "runtime_ms": 31.791,
+      "config": {
+        "tile_size_l1": 32,
+        "tile_size_l2": 64,
+        "tile_size_k": 16,
+        "unroll_factor": 16,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=32",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=16",
+        "-affine-scalrep",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "trial": 45,
+      "speedup": 2.116,
+      "runtime_ms": 212.67,
+      "config": {
+        "tile_size_l1": 8,
+        "tile_size_l2": 64,
+        "tile_size_k": 32,
+        "unroll_factor": 16,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": false,
+        "vector_width": 512,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=8",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=16",
+        "-affine-scalrep"
+      ]
+    },
+    {
+      "trial": 46,
+      "speedup": 10.459,
+      "runtime_ms": 43.024,
+      "config": {
+        "tile_size_l1": 16,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 1,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=16",
+        "-affine-loop-fusion",
+        "-affine-scalrep",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "trial": 47,
+      "speedup": 5.067,
+      "runtime_ms": 88.805,
+      "config": {
+        "tile_size_l1": 64,
+        "tile_size_l2": 64,
+        "tile_size_k": 256,
+        "unroll_factor": 16,
+        "enable_fusion": false,
+        "enable_scalrep": false,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=64",
+        "-affine-loop-unroll=unroll-factor=16",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "trial": 48,
+      "speedup": 2.143,
+      "runtime_ms": 209.96,
+      "config": {
+        "tile_size_l1": 32,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 16,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": false,
+        "vector_width": 128,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=32",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=16",
+        "-affine-scalrep"
+      ]
+    },
+    {
+      "trial": 49,
+      "speedup": 10.8,
+      "runtime_ms": 41.667,
+      "config": {
+        "tile_size_l1": 128,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 16,
+        "enable_fusion": true,
+        "enable_scalrep": false,
+        "enable_coalescing": true,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=128",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=16",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    }
+  ],
+  "genetic_history": [
+    {
+      "generation": 0,
+      "trial": 1,
+      "speedup": 2.113,
+      "runtime_ms": 212.931,
+      "config": {
+        "tile_size_l1": 8,
+        "tile_size_l2": 64,
+        "tile_size_k": 8,
+        "unroll_factor": 2,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 128,
+        "pass_order": [
+          "scalrep",
+          "fusion",
+          "unroll",
+          "coalescing",
+          "tile",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-affine-scalrep",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=2",
+        "-affine-loop-tile=tile-size=8",
+        "-affine-super-vectorize=virtual-vector-size=2"
+      ]
+    },
+    {
+      "generation": 0,
+      "trial": 2,
+      "speedup": 1.298,
+      "runtime_ms": 346.585,
+      "config": {
+        "tile_size_l1": 64,
+        "tile_size_l2": 64,
+        "tile_size_k": 8,
+        "unroll_factor": 16,
+        "enable_fusion": false,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": false,
+        "vector_width": 128,
+        "pass_order": [
+          "scalrep",
+          "vectorize",
+          "unroll",
+          "coalescing",
+          "fusion",
+          "tile"
+        ]
+      },
+      "flags": [
+        "-affine-scalrep",
+        "-affine-loop-unroll=unroll-factor=16",
+        "-affine-loop-tile=tile-size=64"
+      ]
+    },
+    {
+      "generation": 0,
+      "trial": 3,
+      "speedup": 3.778,
+      "runtime_ms": 119.114,
+      "config": {
+        "tile_size_l1": 8,
+        "tile_size_l2": 64,
+        "tile_size_k": 256,
+        "unroll_factor": 4,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 256,
+        "pass_order": [
+          "coalescing",
+          "tile",
+          "vectorize",
+          "unroll",
+          "scalrep",
+          "fusion"
+        ]
+      },
+      "flags": [
+        "-affine-loop-tile=tile-size=8",
+        "-affine-super-vectorize=virtual-vector-size=4",
+        "-affine-loop-unroll=unroll-factor=4",
+        "-affine-scalrep",
+        "-affine-loop-fusion"
+      ]
+    },
+    {
+      "generation": 0,
+      "trial": 4,
+      "speedup": 10.94,
+      "runtime_ms": 41.135,
+      "config": {
+        "tile_size_l1": 64,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 8,
+        "enable_fusion": true,
+        "enable_scalrep": false,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "scalrep",
+          "fusion",
+          "tile",
+          "vectorize",
+          "coalescing",
+          "unroll"
+        ]
+      },
+      "flags": [
+        "-affine-loop-fusion",
+        "-affine-loop-tile=tile-size=64",
+        "-affine-super-vectorize=virtual-vector-size=8",
+        "-affine-loop-unroll=unroll-factor=8"
+      ]
+    },
+    {
+      "generation": 0,
+      "trial": 5,
+      "speedup": 0.393,
+      "runtime_ms": 1145.598,
+      "config": {
+        "tile_size_l1": 256,
+        "tile_size_l2": 64,
+        "tile_size_k": 8,
+        "unroll_factor": 1,
+        "enable_fusion": false,
+        "enable_scalrep": false,
+        "enable_coalescing": false,
+        "enable_super_vectorize": false,
+        "vector_width": 128,
+        "pass_order": [
+          "unroll",
+          "coalescing",
+          "scalrep",
+          "fusion",
+          "vectorize",
+          "tile"
+        ]
+      },
+      "flags": [
+        "-affine-loop-tile=tile-size=256"
+      ]
+    },
+    {
+      "generation": 0,
+      "trial": 6,
+      "speedup": 0.879,
+      "runtime_ms": 511.753,
+      "config": {
+        "tile_size_l1": 128,
+        "tile_size_l2": 64,
+        "tile_size_k": 128,
+        "unroll_factor": 1,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": true,
+        "enable_super_vectorize": false,
+        "vector_width": 256,
+        "pass_order": [
+          "tile",
+          "scalrep",
+          "coalescing",
+          "fusion",
+          "vectorize",
+          "unroll"
+        ]
+      },
+      "flags": [
+        "-affine-loop-tile=tile-size=128",
+        "-affine-scalrep",
+        "-affine-loop-coalescing",
+        "-affine-loop-fusion"
+      ]
+    },
+    {
+      "generation": 0,
+      "trial": 7,
+      "speedup": 0.35,
+      "runtime_ms": 1286.873,
+      "config": {
+        "tile_size_l1": 256,
+        "tile_size_l2": 64,
+        "tile_size_k": 256,
+        "unroll_factor": 1,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": false,
+        "vector_width": 256,
+        "pass_order": [
+          "tile",
+          "scalrep",
+          "vectorize",
+          "fusion",
+          "coalescing",
+          "unroll"
+        ]
+      },
+      "flags": [
+        "-affine-loop-tile=tile-size=256",
+        "-affine-scalrep",
+        "-affine-loop-fusion"
+      ]
+    },
+    {
+      "generation": 0,
+      "trial": 8,
+      "speedup": 4.418,
+      "runtime_ms": 101.859,
+      "config": {
+        "tile_size_l1": 32,
+        "tile_size_l2": 64,
+        "tile_size_k": 128,
+        "unroll_factor": 8,
+        "enable_fusion": true,
+        "enable_scalrep": false,
+        "enable_coalescing": true,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "scalrep",
+          "coalescing",
+          "vectorize",
+          "unroll",
+          "fusion",
+          "tile"
+        ]
+      },
+      "flags": [
+        "-affine-loop-coalescing",
+        "-affine-super-vectorize=virtual-vector-size=8",
+        "-affine-loop-unroll=unroll-factor=8",
+        "-affine-loop-fusion",
+        "-affine-loop-tile=tile-size=32"
+      ]
+    },
+    {
+      "generation": 0,
+      "trial": 9,
+      "speedup": 1.865,
+      "runtime_ms": 241.341,
+      "config": {
+        "tile_size_l1": 64,
+        "tile_size_l2": 64,
+        "tile_size_k": 32,
+        "unroll_factor": 4,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 128,
+        "pass_order": [
+          "tile",
+          "fusion",
+          "scalrep",
+          "unroll",
+          "vectorize",
+          "coalescing"
+        ]
+      },
+      "flags": [
+        "-affine-loop-tile=tile-size=64",
+        "-affine-loop-fusion",
+        "-affine-scalrep",
+        "-affine-loop-unroll=unroll-factor=4",
+        "-affine-super-vectorize=virtual-vector-size=2"
+      ]
+    },
+    {
+      "generation": 0,
+      "trial": 10,
+      "speedup": 6.807,
+      "runtime_ms": 66.106,
+      "config": {
+        "tile_size_l1": 64,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 8,
+        "enable_fusion": false,
+        "enable_scalrep": false,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "vectorize",
+          "scalrep",
+          "unroll",
+          "coalescing",
+          "fusion",
+          "tile"
+        ]
+      },
+      "flags": [
+        "-affine-super-vectorize=virtual-vector-size=8",
+        "-affine-loop-unroll=unroll-factor=8",
+        "-affine-loop-tile=tile-size=64"
+      ]
+    },
+    {
+      "generation": 0,
+      "trial": 11,
+      "speedup": 1.159,
+      "runtime_ms": 388.376,
+      "config": {
+        "tile_size_l1": 4,
+        "tile_size_l2": 64,
+        "tile_size_k": 16,
+        "unroll_factor": 8,
+        "enable_fusion": true,
+        "enable_scalrep": false,
+        "enable_coalescing": true,
+        "enable_super_vectorize": false,
+        "vector_width": 512,
+        "pass_order": [
+          "coalescing",
+          "fusion",
+          "scalrep",
+          "unroll",
+          "tile",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-affine-loop-coalescing",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=8",
+        "-affine-loop-tile=tile-size=4"
+      ]
+    },
+    {
+      "generation": 0,
+      "trial": 12,
+      "speedup": 2.245,
+      "runtime_ms": 200.436,
+      "config": {
+        "tile_size_l1": 256,
+        "tile_size_l2": 64,
+        "tile_size_k": 128,
+        "unroll_factor": 16,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "scalrep",
+          "vectorize",
+          "unroll",
+          "tile",
+          "coalescing",
+          "fusion"
+        ]
+      },
+      "flags": [
+        "-affine-scalrep",
+        "-affine-super-vectorize=virtual-vector-size=8",
+        "-affine-loop-unroll=unroll-factor=16",
+        "-affine-loop-tile=tile-size=256",
+        "-affine-loop-fusion"
+      ]
+    },
+    {
+      "generation": 0,
+      "trial": 13,
+      "speedup": 2.383,
+      "runtime_ms": 188.839,
+      "config": {
+        "tile_size_l1": 4,
+        "tile_size_l2": 64,
+        "tile_size_k": 16,
+        "unroll_factor": 4,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": true,
+        "enable_super_vectorize": true,
+        "vector_width": 128,
+        "pass_order": [
+          "scalrep",
+          "vectorize",
+          "fusion",
+          "unroll",
+          "tile",
+          "coalescing"
+        ]
+      },
+      "flags": [
+        "-affine-scalrep",
+        "-affine-super-vectorize=virtual-vector-size=2",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=4",
+        "-affine-loop-tile=tile-size=4",
+        "-affine-loop-coalescing"
+      ]
+    },
+    {
+      "generation": 0,
+      "trial": 14,
+      "speedup": 8.306,
+      "runtime_ms": 54.177,
+      "config": {
+        "tile_size_l1": 8,
+        "tile_size_l2": 64,
+        "tile_size_k": 128,
+        "unroll_factor": 8,
+        "enable_fusion": true,
+        "enable_scalrep": false,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "fusion",
+          "coalescing",
+          "unroll",
+          "tile",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=8",
+        "-affine-loop-tile=tile-size=8",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "generation": 0,
+      "trial": 15,
+      "speedup": 4.275,
+      "runtime_ms": 105.266,
+      "config": {
+        "tile_size_l1": 32,
+        "tile_size_l2": 64,
+        "tile_size_k": 64,
+        "unroll_factor": 8,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": true,
+        "enable_super_vectorize": true,
+        "vector_width": 256,
+        "pass_order": [
+          "tile",
+          "scalrep",
+          "coalescing",
+          "unroll",
+          "fusion",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-affine-loop-tile=tile-size=32",
+        "-affine-scalrep",
+        "-affine-loop-coalescing",
+        "-affine-loop-unroll=unroll-factor=8",
+        "-affine-loop-fusion",
+        "-affine-super-vectorize=virtual-vector-size=4"
+      ]
+    },
+    {
+      "generation": 0,
+      "trial": 16,
+      "speedup": 1.078,
+      "runtime_ms": 417.465,
+      "config": {
+        "tile_size_l1": 4,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 1,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": true,
+        "enable_super_vectorize": false,
+        "vector_width": 128,
+        "pass_order": [
+          "scalrep",
+          "vectorize",
+          "unroll",
+          "fusion",
+          "coalescing",
+          "tile"
+        ]
+      },
+      "flags": [
+        "-affine-scalrep",
+        "-affine-loop-fusion",
+        "-affine-loop-coalescing",
+        "-affine-loop-tile=tile-size=4"
+      ]
+    },
+    {
+      "generation": 1,
+      "trial": 17,
+      "speedup": 11.472,
+      "runtime_ms": 39.225,
+      "config": {
+        "tile_size_l1": 64,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 8,
+        "enable_fusion": true,
+        "enable_scalrep": false,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "scalrep",
+          "fusion",
+          "tile",
+          "vectorize",
+          "coalescing",
+          "unroll"
+        ]
+      },
+      "flags": [
+        "-affine-loop-fusion",
+        "-affine-loop-tile=tile-size=64",
+        "-affine-super-vectorize=virtual-vector-size=8",
+        "-affine-loop-unroll=unroll-factor=8"
+      ]
+    },
+    {
+      "generation": 1,
+      "trial": 18,
+      "speedup": 8.123,
+      "runtime_ms": 55.399,
+      "config": {
+        "tile_size_l1": 8,
+        "tile_size_l2": 64,
+        "tile_size_k": 128,
+        "unroll_factor": 8,
+        "enable_fusion": true,
+        "enable_scalrep": false,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "fusion",
+          "coalescing",
+          "unroll",
+          "tile",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=8",
+        "-affine-loop-tile=tile-size=8",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "generation": 1,
+      "trial": 19,
+      "speedup": 1.549,
+      "runtime_ms": 290.443,
+      "config": {
+        "tile_size_l1": 32,
+        "tile_size_l2": 64,
+        "tile_size_k": 64,
+        "unroll_factor": 8,
+        "enable_fusion": true,
+        "enable_scalrep": false,
+        "enable_coalescing": true,
+        "enable_super_vectorize": true,
+        "vector_width": 128,
+        "pass_order": [
+          "tile",
+          "scalrep",
+          "coalescing",
+          "unroll",
+          "fusion",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-affine-loop-tile=tile-size=32",
+        "-affine-loop-coalescing",
+        "-affine-loop-unroll=unroll-factor=8",
+        "-affine-loop-fusion",
+        "-affine-super-vectorize=virtual-vector-size=2"
+      ]
+    },
+    {
+      "generation": 1,
+      "trial": 20,
+      "speedup": 3.754,
+      "runtime_ms": 119.863,
+      "config": {
+        "tile_size_l1": 32,
+        "tile_size_l2": 64,
+        "tile_size_k": 128,
+        "unroll_factor": 8,
+        "enable_fusion": false,
+        "enable_scalrep": true,
+        "enable_coalescing": true,
+        "enable_super_vectorize": true,
+        "vector_width": 256,
+        "pass_order": [
+          "scalrep",
+          "coalescing",
+          "tile",
+          "unroll",
+          "fusion",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-affine-scalrep",
+        "-affine-loop-coalescing",
+        "-affine-loop-tile=tile-size=32",
+        "-affine-loop-unroll=unroll-factor=8",
+        "-affine-super-vectorize=virtual-vector-size=4"
+      ]
+    },
+    {
+      "generation": 1,
+      "trial": 21,
+      "speedup": 9.64,
+      "runtime_ms": 46.681,
+      "config": {
+        "tile_size_l1": 32,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 4,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": true,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "scalrep",
+          "coalescing",
+          "vectorize",
+          "unroll",
+          "fusion",
+          "tile"
+        ]
+      },
+      "flags": [
+        "-affine-scalrep",
+        "-affine-loop-coalescing",
+        "-affine-super-vectorize=virtual-vector-size=8",
+        "-affine-loop-unroll=unroll-factor=4",
+        "-affine-loop-fusion",
+        "-affine-loop-tile=tile-size=32"
+      ]
+    },
+    {
+      "generation": 1,
+      "trial": 22,
+      "speedup": 3.446,
+      "runtime_ms": 130.582,
+      "config": {
+        "tile_size_l1": 32,
+        "tile_size_l2": 64,
+        "tile_size_k": 16,
+        "unroll_factor": 8,
+        "enable_fusion": false,
+        "enable_scalrep": false,
+        "enable_coalescing": true,
+        "enable_super_vectorize": true,
+        "vector_width": 256,
+        "pass_order": [
+          "scalrep",
+          "vectorize",
+          "fusion",
+          "unroll",
+          "tile",
+          "coalescing"
+        ]
+      },
+      "flags": [
+        "-affine-super-vectorize=virtual-vector-size=4",
+        "-affine-loop-unroll=unroll-factor=8",
+        "-affine-loop-tile=tile-size=32",
+        "-affine-loop-coalescing"
+      ]
+    },
+    {
+      "generation": 1,
+      "trial": 23,
+      "speedup": 11.557,
+      "runtime_ms": 38.936,
+      "config": {
+        "tile_size_l1": 64,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 8,
+        "enable_fusion": true,
+        "enable_scalrep": false,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "fusion",
+          "scalrep",
+          "tile",
+          "vectorize",
+          "coalescing",
+          "unroll"
+        ]
+      },
+      "flags": [
+        "-affine-loop-fusion",
+        "-affine-loop-tile=tile-size=64",
+        "-affine-super-vectorize=virtual-vector-size=8",
+        "-affine-loop-unroll=unroll-factor=8"
+      ]
+    },
+    {
+      "generation": 1,
+      "trial": 24,
+      "speedup": 3.716,
+      "runtime_ms": 121.104,
+      "config": {
+        "tile_size_l1": 32,
+        "tile_size_l2": 64,
+        "tile_size_k": 64,
+        "unroll_factor": 8,
+        "enable_fusion": false,
+        "enable_scalrep": true,
+        "enable_coalescing": true,
+        "enable_super_vectorize": true,
+        "vector_width": 256,
+        "pass_order": [
+          "tile",
+          "scalrep",
+          "coalescing",
+          "unroll",
+          "fusion",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-affine-loop-tile=tile-size=32",
+        "-affine-scalrep",
+        "-affine-loop-coalescing",
+        "-affine-loop-unroll=unroll-factor=8",
+        "-affine-super-vectorize=virtual-vector-size=4"
+      ]
+    },
+    {
+      "generation": 1,
+      "trial": 25,
+      "speedup": 2.9,
+      "runtime_ms": 155.178,
+      "config": {
+        "tile_size_l1": 256,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 8,
+        "enable_fusion": true,
+        "enable_scalrep": false,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 128,
+        "pass_order": [
+          "scalrep",
+          "fusion",
+          "tile",
+          "vectorize",
+          "coalescing",
+          "unroll"
+        ]
+      },
+      "flags": [
+        "-affine-loop-fusion",
+        "-affine-loop-tile=tile-size=256",
+        "-affine-super-vectorize=virtual-vector-size=2",
+        "-affine-loop-unroll=unroll-factor=8"
+      ]
+    },
+    {
+      "generation": 1,
+      "trial": 26,
+      "speedup": 5.807,
+      "runtime_ms": 77.495,
+      "config": {
+        "tile_size_l1": 64,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 8,
+        "enable_fusion": true,
+        "enable_scalrep": false,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 256,
+        "pass_order": [
+          "vectorize",
+          "scalrep",
+          "tile",
+          "coalescing",
+          "fusion",
+          "unroll"
+        ]
+      },
+      "flags": [
+        "-affine-super-vectorize=virtual-vector-size=4",
+        "-affine-loop-tile=tile-size=64",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=8"
+      ]
+    },
+    {
+      "generation": 1,
+      "trial": 27,
+      "speedup": 1.197,
+      "runtime_ms": 375.945,
+      "config": {
+        "tile_size_l1": 64,
+        "tile_size_l2": 64,
+        "tile_size_k": 64,
+        "unroll_factor": 4,
+        "enable_fusion": false,
+        "enable_scalrep": false,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 128,
+        "pass_order": [
+          "coalescing",
+          "tile",
+          "vectorize",
+          "unroll",
+          "scalrep",
+          "fusion"
+        ]
+      },
+      "flags": [
+        "-affine-loop-tile=tile-size=64",
+        "-affine-super-vectorize=virtual-vector-size=2",
+        "-affine-loop-unroll=unroll-factor=4"
+      ]
+    },
+    {
+      "generation": 1,
+      "trial": 28,
+      "speedup": 6.948,
+      "runtime_ms": 64.77,
+      "config": {
+        "tile_size_l1": 256,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 4,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 256,
+        "pass_order": [
+          "scalrep",
+          "fusion",
+          "tile",
+          "vectorize",
+          "coalescing",
+          "unroll"
+        ]
+      },
+      "flags": [
+        "-affine-scalrep",
+        "-affine-loop-fusion",
+        "-affine-loop-tile=tile-size=256",
+        "-affine-super-vectorize=virtual-vector-size=4",
+        "-affine-loop-unroll=unroll-factor=4"
+      ]
+    },
+    {
+      "generation": 1,
+      "trial": 29,
+      "speedup": 5.625,
+      "runtime_ms": 79.997,
+      "config": {
+        "tile_size_l1": 64,
+        "tile_size_l2": 64,
+        "tile_size_k": 32,
+        "unroll_factor": 4,
+        "enable_fusion": true,
+        "enable_scalrep": false,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "tile",
+          "fusion",
+          "scalrep",
+          "unroll",
+          "vectorize",
+          "coalescing"
+        ]
+      },
+      "flags": [
+        "-affine-loop-tile=tile-size=64",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=4",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "generation": 1,
+      "trial": 30,
+      "speedup": 2.385,
+      "runtime_ms": 188.651,
+      "config": {
+        "tile_size_l1": 64,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 4,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 128,
+        "pass_order": [
+          "vectorize",
+          "unroll",
+          "scalrep",
+          "coalescing",
+          "fusion",
+          "tile"
+        ]
+      },
+      "flags": [
+        "-affine-super-vectorize=virtual-vector-size=2",
+        "-affine-loop-unroll=unroll-factor=4",
+        "-affine-scalrep",
+        "-affine-loop-fusion",
+        "-affine-loop-tile=tile-size=64"
+      ]
+    },
+    {
+      "generation": 1,
+      "trial": 31,
+      "speedup": 1.557,
+      "runtime_ms": 288.938,
+      "config": {
+        "tile_size_l1": 4,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 2,
+        "enable_fusion": true,
+        "enable_scalrep": false,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 128,
+        "pass_order": [
+          "vectorize",
+          "scalrep",
+          "unroll",
+          "coalescing",
+          "fusion",
+          "tile"
+        ]
+      },
+      "flags": [
+        "-affine-super-vectorize=virtual-vector-size=2",
+        "-affine-loop-unroll=unroll-factor=2",
+        "-affine-loop-fusion",
+        "-affine-loop-tile=tile-size=4"
+      ]
+    },
+    {
+      "generation": 1,
+      "trial": 32,
+      "speedup": 7.813,
+      "runtime_ms": 57.599,
+      "config": {
+        "tile_size_l1": 64,
+        "tile_size_l2": 64,
+        "tile_size_k": 16,
+        "unroll_factor": 8,
+        "enable_fusion": true,
+        "enable_scalrep": false,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "fusion",
+          "scalrep",
+          "unroll",
+          "coalescing",
+          "tile",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=8",
+        "-affine-loop-tile=tile-size=64",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "generation": 2,
+      "trial": 33,
+      "speedup": 11.527,
+      "runtime_ms": 39.04,
+      "config": {
+        "tile_size_l1": 64,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 8,
+        "enable_fusion": true,
+        "enable_scalrep": false,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "fusion",
+          "scalrep",
+          "tile",
+          "vectorize",
+          "coalescing",
+          "unroll"
+        ]
+      },
+      "flags": [
+        "-affine-loop-fusion",
+        "-affine-loop-tile=tile-size=64",
+        "-affine-super-vectorize=virtual-vector-size=8",
+        "-affine-loop-unroll=unroll-factor=8"
+      ]
+    },
+    {
+      "generation": 2,
+      "trial": 34,
+      "speedup": 11.098,
+      "runtime_ms": 40.548,
+      "config": {
+        "tile_size_l1": 64,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 8,
+        "enable_fusion": true,
+        "enable_scalrep": false,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "scalrep",
+          "fusion",
+          "tile",
+          "vectorize",
+          "coalescing",
+          "unroll"
+        ]
+      },
+      "flags": [
+        "-affine-loop-fusion",
+        "-affine-loop-tile=tile-size=64",
+        "-affine-super-vectorize=virtual-vector-size=8",
+        "-affine-loop-unroll=unroll-factor=8"
+      ]
+    },
+    {
+      "generation": 2,
+      "trial": 35,
+      "speedup": 7.338,
+      "runtime_ms": 61.325,
+      "config": {
+        "tile_size_l1": 32,
+        "tile_size_l2": 64,
+        "tile_size_k": 128,
+        "unroll_factor": 8,
+        "enable_fusion": false,
+        "enable_scalrep": true,
+        "enable_coalescing": true,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "scalrep",
+          "coalescing",
+          "tile",
+          "unroll",
+          "fusion",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-affine-scalrep",
+        "-affine-loop-coalescing",
+        "-affine-loop-tile=tile-size=32",
+        "-affine-loop-unroll=unroll-factor=8",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "generation": 2,
+      "trial": 36,
+      "speedup": 3.828,
+      "runtime_ms": 117.541,
+      "config": {
+        "tile_size_l1": 32,
+        "tile_size_l2": 64,
+        "tile_size_k": 64,
+        "unroll_factor": 8,
+        "enable_fusion": false,
+        "enable_scalrep": false,
+        "enable_coalescing": true,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "unroll",
+          "scalrep",
+          "coalescing",
+          "tile",
+          "fusion",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-affine-loop-unroll=unroll-factor=8",
+        "-affine-loop-coalescing",
+        "-affine-loop-tile=tile-size=32",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "generation": 2,
+      "trial": 37,
+      "speedup": 9.668,
+      "runtime_ms": 46.545,
+      "config": {
+        "tile_size_l1": 8,
+        "tile_size_l2": 64,
+        "tile_size_k": 128,
+        "unroll_factor": 4,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "fusion",
+          "coalescing",
+          "unroll",
+          "tile",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=4",
+        "-affine-loop-tile=tile-size=8",
+        "-affine-scalrep",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "generation": 2,
+      "trial": 38,
+      "speedup": 10.689,
+      "runtime_ms": 42.098,
+      "config": {
+        "tile_size_l1": 64,
+        "tile_size_l2": 64,
+        "tile_size_k": 16,
+        "unroll_factor": 8,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "fusion",
+          "scalrep",
+          "unroll",
+          "coalescing",
+          "tile",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-affine-loop-fusion",
+        "-affine-scalrep",
+        "-affine-loop-unroll=unroll-factor=8",
+        "-affine-loop-tile=tile-size=64",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "generation": 2,
+      "trial": 39,
+      "speedup": 12.874,
+      "runtime_ms": 34.955,
+      "config": {
+        "tile_size_l1": 64,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 16,
+        "enable_fusion": false,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "fusion",
+          "scalrep",
+          "tile",
+          "vectorize",
+          "coalescing",
+          "unroll"
+        ]
+      },
+      "flags": [
+        "-affine-scalrep",
+        "-affine-loop-tile=tile-size=64",
+        "-affine-super-vectorize=virtual-vector-size=8",
+        "-affine-loop-unroll=unroll-factor=16"
+      ]
+    },
+    {
+      "generation": 2,
+      "trial": 40,
+      "speedup": 5.021,
+      "runtime_ms": 89.624,
+      "config": {
+        "tile_size_l1": 256,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 4,
+        "enable_fusion": true,
+        "enable_scalrep": false,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 256,
+        "pass_order": [
+          "scalrep",
+          "fusion",
+          "tile",
+          "vectorize",
+          "coalescing",
+          "unroll"
+        ]
+      },
+      "flags": [
+        "-affine-loop-fusion",
+        "-affine-loop-tile=tile-size=256",
+        "-affine-super-vectorize=virtual-vector-size=4",
+        "-affine-loop-unroll=unroll-factor=4"
+      ]
+    },
+    {
+      "generation": 2,
+      "trial": 41,
+      "speedup": 15.343,
+      "runtime_ms": 29.329,
+      "config": {
+        "tile_size_l1": 8,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 8,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "scalrep",
+          "fusion",
+          "tile",
+          "vectorize",
+          "coalescing",
+          "unroll"
+        ]
+      },
+      "flags": [
+        "-affine-scalrep",
+        "-affine-loop-fusion",
+        "-affine-loop-tile=tile-size=8",
+        "-affine-super-vectorize=virtual-vector-size=8",
+        "-affine-loop-unroll=unroll-factor=8"
+      ]
+    },
+    {
+      "generation": 2,
+      "trial": 42,
+      "speedup": 1.929,
+      "runtime_ms": 233.222,
+      "config": {
+        "tile_size_l1": 256,
+        "tile_size_l2": 64,
+        "tile_size_k": 64,
+        "unroll_factor": 4,
+        "enable_fusion": true,
+        "enable_scalrep": false,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 256,
+        "pass_order": [
+          "fusion",
+          "coalescing",
+          "unroll",
+          "tile",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=4",
+        "-affine-loop-tile=tile-size=256",
+        "-affine-super-vectorize=virtual-vector-size=4"
+      ]
+    },
+    {
+      "generation": 2,
+      "trial": 43,
+      "speedup": 11.023,
+      "runtime_ms": 40.826,
+      "config": {
+        "tile_size_l1": 8,
+        "tile_size_l2": 64,
+        "tile_size_k": 32,
+        "unroll_factor": 8,
+        "enable_fusion": true,
+        "enable_scalrep": false,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "tile",
+          "fusion",
+          "scalrep",
+          "unroll",
+          "vectorize",
+          "coalescing"
+        ]
+      },
+      "flags": [
+        "-affine-loop-tile=tile-size=8",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=8",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "generation": 2,
+      "trial": 44,
+      "speedup": 4.19,
+      "runtime_ms": 107.392,
+      "config": {
+        "tile_size_l1": 256,
+        "tile_size_l2": 64,
+        "tile_size_k": 16,
+        "unroll_factor": 2,
+        "enable_fusion": false,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "fusion",
+          "coalescing",
+          "unroll",
+          "tile",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-affine-loop-unroll=unroll-factor=2",
+        "-affine-loop-tile=tile-size=256",
+        "-affine-scalrep",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "generation": 2,
+      "trial": 45,
+      "speedup": 2.006,
+      "runtime_ms": 224.29,
+      "config": {
+        "tile_size_l1": 64,
+        "tile_size_l2": 64,
+        "tile_size_k": 128,
+        "unroll_factor": 1,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": true,
+        "enable_super_vectorize": true,
+        "vector_width": 256,
+        "pass_order": [
+          "scalrep",
+          "coalescing",
+          "vectorize",
+          "unroll",
+          "fusion",
+          "tile"
+        ]
+      },
+      "flags": [
+        "-affine-scalrep",
+        "-affine-loop-coalescing",
+        "-affine-super-vectorize=virtual-vector-size=4",
+        "-affine-loop-fusion",
+        "-affine-loop-tile=tile-size=64"
+      ]
+    },
+    {
+      "generation": 2,
+      "trial": 46,
+      "speedup": 8.704,
+      "runtime_ms": 51.702,
+      "config": {
+        "tile_size_l1": 32,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 4,
+        "enable_fusion": false,
+        "enable_scalrep": false,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "vectorize",
+          "scalrep",
+          "tile",
+          "coalescing",
+          "fusion",
+          "unroll"
+        ]
+      },
+      "flags": [
+        "-affine-super-vectorize=virtual-vector-size=8",
+        "-affine-loop-tile=tile-size=32",
+        "-affine-loop-unroll=unroll-factor=4"
+      ]
+    },
+    {
+      "generation": 2,
+      "trial": 47,
+      "speedup": 3.702,
+      "runtime_ms": 121.567,
+      "config": {
+        "tile_size_l1": 256,
+        "tile_size_l2": 64,
+        "tile_size_k": 32,
+        "unroll_factor": 8,
+        "enable_fusion": false,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 256,
+        "pass_order": [
+          "tile",
+          "fusion",
+          "scalrep",
+          "unroll",
+          "vectorize",
+          "coalescing"
+        ]
+      },
+      "flags": [
+        "-affine-loop-tile=tile-size=256",
+        "-affine-scalrep",
+        "-affine-loop-unroll=unroll-factor=8",
+        "-affine-super-vectorize=virtual-vector-size=4"
+      ]
+    },
+    {
+      "generation": 2,
+      "trial": 48,
+      "speedup": 5.692,
+      "runtime_ms": 79.055,
+      "config": {
+        "tile_size_l1": 64,
+        "tile_size_l2": 64,
+        "tile_size_k": 128,
+        "unroll_factor": 4,
+        "enable_fusion": true,
+        "enable_scalrep": false,
+        "enable_coalescing": true,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "scalrep",
+          "vectorize",
+          "tile",
+          "unroll",
+          "fusion",
+          "coalescing"
+        ]
+      },
+      "flags": [
+        "-affine-super-vectorize=virtual-vector-size=8",
+        "-affine-loop-tile=tile-size=64",
+        "-affine-loop-unroll=unroll-factor=4",
+        "-affine-loop-fusion",
+        "-affine-loop-coalescing"
+      ]
+    },
+    {
+      "generation": 3,
+      "trial": 49,
+      "speedup": 14.944,
+      "runtime_ms": 30.113,
+      "config": {
+        "tile_size_l1": 8,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 8,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "scalrep",
+          "fusion",
+          "tile",
+          "vectorize",
+          "coalescing",
+          "unroll"
+        ]
+      },
+      "flags": [
+        "-affine-scalrep",
+        "-affine-loop-fusion",
+        "-affine-loop-tile=tile-size=8",
+        "-affine-super-vectorize=virtual-vector-size=8",
+        "-affine-loop-unroll=unroll-factor=8"
+      ]
+    },
+    {
+      "generation": 3,
+      "trial": 50,
+      "speedup": 12.747,
+      "runtime_ms": 35.303,
+      "config": {
+        "tile_size_l1": 64,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 16,
+        "enable_fusion": false,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "fusion",
+          "scalrep",
+          "tile",
+          "vectorize",
+          "coalescing",
+          "unroll"
+        ]
+      },
+      "flags": [
+        "-affine-scalrep",
+        "-affine-loop-tile=tile-size=64",
+        "-affine-super-vectorize=virtual-vector-size=8",
+        "-affine-loop-unroll=unroll-factor=16"
+      ]
+    },
+    {
+      "generation": 3,
+      "trial": 51,
+      "speedup": 15.277,
+      "runtime_ms": 29.455,
+      "config": {
+        "tile_size_l1": 64,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 8,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "fusion",
+          "scalrep",
+          "tile",
+          "coalescing",
+          "vectorize",
+          "unroll"
+        ]
+      },
+      "flags": [
+        "-affine-loop-fusion",
+        "-affine-scalrep",
+        "-affine-loop-tile=tile-size=64",
+        "-affine-super-vectorize=virtual-vector-size=8",
+        "-affine-loop-unroll=unroll-factor=8"
+      ]
+    },
+    {
+      "generation": 3,
+      "trial": 52,
+      "speedup": 9.648,
+      "runtime_ms": 46.641,
+      "config": {
+        "tile_size_l1": 64,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 8,
+        "enable_fusion": false,
+        "enable_scalrep": false,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "fusion",
+          "scalrep",
+          "tile",
+          "vectorize",
+          "coalescing",
+          "unroll"
+        ]
+      },
+      "flags": [
+        "-affine-loop-tile=tile-size=64",
+        "-affine-super-vectorize=virtual-vector-size=8",
+        "-affine-loop-unroll=unroll-factor=8"
+      ]
+    },
+    {
+      "generation": 3,
+      "trial": 53,
+      "speedup": 11.712,
+      "runtime_ms": 38.421,
+      "config": {
+        "tile_size_l1": 8,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 4,
+        "enable_fusion": false,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "scalrep",
+          "fusion",
+          "tile",
+          "vectorize",
+          "coalescing",
+          "unroll"
+        ]
+      },
+      "flags": [
+        "-affine-scalrep",
+        "-affine-loop-tile=tile-size=8",
+        "-affine-super-vectorize=virtual-vector-size=8",
+        "-affine-loop-unroll=unroll-factor=4"
+      ]
+    },
+    {
+      "generation": 3,
+      "trial": 54,
+      "speedup": 5.432,
+      "runtime_ms": 82.845,
+      "config": {
+        "tile_size_l1": 64,
+        "tile_size_l2": 64,
+        "tile_size_k": 128,
+        "unroll_factor": 8,
+        "enable_fusion": false,
+        "enable_scalrep": false,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "fusion",
+          "coalescing",
+          "tile",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-affine-loop-tile=tile-size=64",
+        "-affine-loop-unroll=unroll-factor=8",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "generation": 3,
+      "trial": 55,
+      "speedup": 11.24,
+      "runtime_ms": 40.037,
+      "config": {
+        "tile_size_l1": 64,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 8,
+        "enable_fusion": true,
+        "enable_scalrep": false,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "scalrep",
+          "tile",
+          "fusion",
+          "vectorize",
+          "coalescing",
+          "unroll"
+        ]
+      },
+      "flags": [
+        "-affine-loop-tile=tile-size=64",
+        "-affine-loop-fusion",
+        "-affine-super-vectorize=virtual-vector-size=8",
+        "-affine-loop-unroll=unroll-factor=8"
+      ]
+    },
+    {
+      "generation": 3,
+      "trial": 56,
+      "speedup": 2.619,
+      "runtime_ms": 171.838,
+      "config": {
+        "tile_size_l1": 64,
+        "tile_size_l2": 64,
+        "tile_size_k": 16,
+        "unroll_factor": 8,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 128,
+        "pass_order": [
+          "fusion",
+          "scalrep",
+          "unroll",
+          "coalescing",
+          "tile",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-affine-loop-fusion",
+        "-affine-scalrep",
+        "-affine-loop-unroll=unroll-factor=8",
+        "-affine-loop-tile=tile-size=64",
+        "-affine-super-vectorize=virtual-vector-size=2"
+      ]
+    },
+    {
+      "generation": 3,
+      "trial": 57,
+      "speedup": 11.324,
+      "runtime_ms": 39.739,
+      "config": {
+        "tile_size_l1": 64,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 8,
+        "enable_fusion": true,
+        "enable_scalrep": false,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "tile",
+          "scalrep",
+          "fusion",
+          "vectorize",
+          "coalescing",
+          "unroll"
+        ]
+      },
+      "flags": [
+        "-affine-loop-tile=tile-size=64",
+        "-affine-loop-fusion",
+        "-affine-super-vectorize=virtual-vector-size=8",
+        "-affine-loop-unroll=unroll-factor=8"
+      ]
+    },
+    {
+      "generation": 3,
+      "trial": 58,
+      "speedup": 11.449,
+      "runtime_ms": 39.304,
+      "config": {
+        "tile_size_l1": 64,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 8,
+        "enable_fusion": true,
+        "enable_scalrep": false,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "scalrep",
+          "coalescing",
+          "tile",
+          "vectorize",
+          "fusion",
+          "unroll"
+        ]
+      },
+      "flags": [
+        "-affine-loop-tile=tile-size=64",
+        "-affine-super-vectorize=virtual-vector-size=8",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=8"
+      ]
+    },
+    {
+      "generation": 3,
+      "trial": 59,
+      "speedup": 9.972,
+      "runtime_ms": 45.128,
+      "config": {
+        "tile_size_l1": 64,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 4,
+        "enable_fusion": true,
+        "enable_scalrep": false,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "scalrep",
+          "fusion",
+          "tile",
+          "vectorize",
+          "coalescing",
+          "unroll"
+        ]
+      },
+      "flags": [
+        "-affine-loop-fusion",
+        "-affine-loop-tile=tile-size=64",
+        "-affine-super-vectorize=virtual-vector-size=8",
+        "-affine-loop-unroll=unroll-factor=4"
+      ]
+    },
+    {
+      "generation": 3,
+      "trial": 60,
+      "speedup": 5.58,
+      "runtime_ms": 80.641,
+      "config": {
+        "tile_size_l1": 64,
+        "tile_size_l2": 64,
+        "tile_size_k": 128,
+        "unroll_factor": 4,
+        "enable_fusion": true,
+        "enable_scalrep": false,
+        "enable_coalescing": true,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "scalrep",
+          "vectorize",
+          "tile",
+          "unroll",
+          "fusion",
+          "coalescing"
+        ]
+      },
+      "flags": [
+        "-affine-super-vectorize=virtual-vector-size=8",
+        "-affine-loop-tile=tile-size=64",
+        "-affine-loop-unroll=unroll-factor=4",
+        "-affine-loop-fusion",
+        "-affine-loop-coalescing"
+      ]
+    },
+    {
+      "generation": 3,
+      "trial": 61,
+      "speedup": 5.113,
+      "runtime_ms": 88.003,
+      "config": {
+        "tile_size_l1": 32,
+        "tile_size_l2": 64,
+        "tile_size_k": 128,
+        "unroll_factor": 1,
+        "enable_fusion": false,
+        "enable_scalrep": true,
+        "enable_coalescing": true,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "scalrep",
+          "coalescing",
+          "tile",
+          "unroll",
+          "fusion",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-affine-scalrep",
+        "-affine-loop-coalescing",
+        "-affine-loop-tile=tile-size=32",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "generation": 3,
+      "trial": 62,
+      "speedup": 9.61,
+      "runtime_ms": 46.827,
+      "config": {
+        "tile_size_l1": 8,
+        "tile_size_l2": 64,
+        "tile_size_k": 128,
+        "unroll_factor": 4,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "fusion",
+          "coalescing",
+          "unroll",
+          "tile",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=4",
+        "-affine-loop-tile=tile-size=8",
+        "-affine-scalrep",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "generation": 3,
+      "trial": 63,
+      "speedup": 13.28,
+      "runtime_ms": 33.886,
+      "config": {
+        "tile_size_l1": 8,
+        "tile_size_l2": 64,
+        "tile_size_k": 128,
+        "unroll_factor": 8,
+        "enable_fusion": false,
+        "enable_scalrep": true,
+        "enable_coalescing": true,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "scalrep",
+          "coalescing",
+          "tile",
+          "unroll",
+          "fusion",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-affine-scalrep",
+        "-affine-loop-coalescing",
+        "-affine-loop-tile=tile-size=8",
+        "-affine-loop-unroll=unroll-factor=8",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "generation": 3,
+      "trial": 64,
+      "speedup": 13.166,
+      "runtime_ms": 34.179,
+      "config": {
+        "tile_size_l1": 32,
+        "tile_size_l2": 64,
+        "tile_size_k": 8,
+        "unroll_factor": 8,
+        "enable_fusion": false,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "scalrep",
+          "fusion",
+          "tile",
+          "vectorize",
+          "coalescing",
+          "unroll"
+        ]
+      },
+      "flags": [
+        "-affine-scalrep",
+        "-affine-loop-tile=tile-size=32",
+        "-affine-super-vectorize=virtual-vector-size=8",
+        "-affine-loop-unroll=unroll-factor=8"
+      ]
+    },
+    {
+      "generation": 4,
+      "trial": 65,
+      "speedup": 15.908,
+      "runtime_ms": 28.287,
+      "config": {
+        "tile_size_l1": 64,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 8,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "fusion",
+          "scalrep",
+          "tile",
+          "coalescing",
+          "vectorize",
+          "unroll"
+        ]
+      },
+      "flags": [
+        "-affine-loop-fusion",
+        "-affine-scalrep",
+        "-affine-loop-tile=tile-size=64",
+        "-affine-super-vectorize=virtual-vector-size=8",
+        "-affine-loop-unroll=unroll-factor=8"
+      ]
+    },
+    {
+      "generation": 4,
+      "trial": 66,
+      "speedup": 15.088,
+      "runtime_ms": 29.825,
+      "config": {
+        "tile_size_l1": 8,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 8,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "scalrep",
+          "fusion",
+          "tile",
+          "vectorize",
+          "coalescing",
+          "unroll"
+        ]
+      },
+      "flags": [
+        "-affine-scalrep",
+        "-affine-loop-fusion",
+        "-affine-loop-tile=tile-size=8",
+        "-affine-super-vectorize=virtual-vector-size=8",
+        "-affine-loop-unroll=unroll-factor=8"
+      ]
+    },
+    {
+      "generation": 4,
+      "trial": 67,
+      "speedup": 10.425,
+      "runtime_ms": 43.166,
+      "config": {
+        "tile_size_l1": 8,
+        "tile_size_l2": 64,
+        "tile_size_k": 128,
+        "unroll_factor": 1,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "scalrep",
+          "coalescing",
+          "tile",
+          "unroll",
+          "fusion",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-affine-scalrep",
+        "-affine-loop-tile=tile-size=8",
+        "-affine-loop-fusion",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "generation": 4,
+      "trial": 68,
+      "speedup": 10.02,
+      "runtime_ms": 44.912,
+      "config": {
+        "tile_size_l1": 64,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 8,
+        "enable_fusion": false,
+        "enable_scalrep": false,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "scalrep",
+          "fusion",
+          "tile",
+          "vectorize",
+          "coalescing",
+          "unroll"
+        ]
+      },
+      "flags": [
+        "-affine-loop-tile=tile-size=64",
+        "-affine-super-vectorize=virtual-vector-size=8",
+        "-affine-loop-unroll=unroll-factor=8"
+      ]
+    },
+    {
+      "generation": 4,
+      "trial": 69,
+      "speedup": 15.11,
+      "runtime_ms": 29.782,
+      "config": {
+        "tile_size_l1": 4,
+        "tile_size_l2": 64,
+        "tile_size_k": 128,
+        "unroll_factor": 8,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": true,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "scalrep",
+          "coalescing",
+          "tile",
+          "unroll",
+          "fusion",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-affine-scalrep",
+        "-affine-loop-coalescing",
+        "-affine-loop-tile=tile-size=4",
+        "-affine-loop-unroll=unroll-factor=8",
+        "-affine-loop-fusion",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "generation": 4,
+      "trial": 70,
+      "speedup": 9.923,
+      "runtime_ms": 45.351,
+      "config": {
+        "tile_size_l1": 8,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 8,
+        "enable_fusion": false,
+        "enable_scalrep": false,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "fusion",
+          "scalrep",
+          "tile",
+          "coalescing",
+          "vectorize",
+          "unroll"
+        ]
+      },
+      "flags": [
+        "-affine-loop-tile=tile-size=8",
+        "-affine-super-vectorize=virtual-vector-size=8",
+        "-affine-loop-unroll=unroll-factor=8"
+      ]
+    },
+    {
+      "generation": 4,
+      "trial": 71,
+      "speedup": 2.157,
+      "runtime_ms": 208.579,
+      "config": {
+        "tile_size_l1": 256,
+        "tile_size_l2": 64,
+        "tile_size_k": 128,
+        "unroll_factor": 8,
+        "enable_fusion": false,
+        "enable_scalrep": false,
+        "enable_coalescing": true,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "scalrep",
+          "coalescing",
+          "tile",
+          "unroll",
+          "fusion",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-affine-loop-coalescing",
+        "-affine-loop-tile=tile-size=256",
+        "-affine-loop-unroll=unroll-factor=8",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "generation": 4,
+      "trial": 72,
+      "speedup": 13.287,
+      "runtime_ms": 33.868,
+      "config": {
+        "tile_size_l1": 8,
+        "tile_size_l2": 64,
+        "tile_size_k": 64,
+        "unroll_factor": 8,
+        "enable_fusion": false,
+        "enable_scalrep": true,
+        "enable_coalescing": true,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "scalrep",
+          "coalescing",
+          "tile",
+          "unroll",
+          "fusion",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-affine-scalrep",
+        "-affine-loop-coalescing",
+        "-affine-loop-tile=tile-size=8",
+        "-affine-loop-unroll=unroll-factor=8",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "generation": 4,
+      "trial": 73,
+      "speedup": 9.103,
+      "runtime_ms": 49.433,
+      "config": {
+        "tile_size_l1": 32,
+        "tile_size_l2": 64,
+        "tile_size_k": 8,
+        "unroll_factor": 1,
+        "enable_fusion": false,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "scalrep",
+          "fusion",
+          "tile",
+          "vectorize",
+          "coalescing",
+          "unroll"
+        ]
+      },
+      "flags": [
+        "-affine-scalrep",
+        "-affine-loop-tile=tile-size=32",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "generation": 4,
+      "trial": 74,
+      "speedup": 13.064,
+      "runtime_ms": 34.445,
+      "config": {
+        "tile_size_l1": 16,
+        "tile_size_l2": 64,
+        "tile_size_k": 8,
+        "unroll_factor": 8,
+        "enable_fusion": false,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "scalrep",
+          "fusion",
+          "tile",
+          "vectorize",
+          "coalescing",
+          "unroll"
+        ]
+      },
+      "flags": [
+        "-affine-scalrep",
+        "-affine-loop-tile=tile-size=16",
+        "-affine-super-vectorize=virtual-vector-size=8",
+        "-affine-loop-unroll=unroll-factor=8"
+      ]
+    },
+    {
+      "generation": 4,
+      "trial": 75,
+      "speedup": 15.373,
+      "runtime_ms": 29.272,
+      "config": {
+        "tile_size_l1": 8,
+        "tile_size_l2": 64,
+        "tile_size_k": 8,
+        "unroll_factor": 8,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "scalrep",
+          "fusion",
+          "tile",
+          "vectorize",
+          "coalescing",
+          "unroll"
+        ]
+      },
+      "flags": [
+        "-affine-scalrep",
+        "-affine-loop-fusion",
+        "-affine-loop-tile=tile-size=8",
+        "-affine-super-vectorize=virtual-vector-size=8",
+        "-affine-loop-unroll=unroll-factor=8"
+      ]
+    },
+    {
+      "generation": 4,
+      "trial": 76,
+      "speedup": 13.398,
+      "runtime_ms": 33.587,
+      "config": {
+        "tile_size_l1": 8,
+        "tile_size_l2": 64,
+        "tile_size_k": 128,
+        "unroll_factor": 8,
+        "enable_fusion": false,
+        "enable_scalrep": true,
+        "enable_coalescing": true,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "scalrep",
+          "coalescing",
+          "tile",
+          "unroll",
+          "fusion",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-affine-scalrep",
+        "-affine-loop-coalescing",
+        "-affine-loop-tile=tile-size=8",
+        "-affine-loop-unroll=unroll-factor=8",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "generation": 4,
+      "trial": 77,
+      "speedup": 15.336,
+      "runtime_ms": 29.343,
+      "config": {
+        "tile_size_l1": 64,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 8,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "scalrep",
+          "fusion",
+          "tile",
+          "vectorize",
+          "coalescing",
+          "unroll"
+        ]
+      },
+      "flags": [
+        "-affine-scalrep",
+        "-affine-loop-fusion",
+        "-affine-loop-tile=tile-size=64",
+        "-affine-super-vectorize=virtual-vector-size=8",
+        "-affine-loop-unroll=unroll-factor=8"
+      ]
+    },
+    {
+      "generation": 4,
+      "trial": 78,
+      "speedup": 10.487,
+      "runtime_ms": 42.909,
+      "config": {
+        "tile_size_l1": 8,
+        "tile_size_l2": 64,
+        "tile_size_k": 64,
+        "unroll_factor": 4,
+        "enable_fusion": true,
+        "enable_scalrep": false,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "fusion",
+          "scalrep",
+          "tile",
+          "coalescing",
+          "vectorize",
+          "unroll"
+        ]
+      },
+      "flags": [
+        "-affine-loop-fusion",
+        "-affine-loop-tile=tile-size=8",
+        "-affine-super-vectorize=virtual-vector-size=8",
+        "-affine-loop-unroll=unroll-factor=4"
+      ]
+    },
+    {
+      "generation": 4,
+      "trial": 79,
+      "speedup": 13.455,
+      "runtime_ms": 33.445,
+      "config": {
+        "tile_size_l1": 8,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 4,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "scalrep",
+          "fusion",
+          "tile",
+          "vectorize",
+          "coalescing",
+          "unroll"
+        ]
+      },
+      "flags": [
+        "-affine-scalrep",
+        "-affine-loop-fusion",
+        "-affine-loop-tile=tile-size=8",
+        "-affine-super-vectorize=virtual-vector-size=8",
+        "-affine-loop-unroll=unroll-factor=4"
+      ]
+    },
+    {
+      "generation": 4,
+      "trial": 80,
+      "speedup": 13.185,
+      "runtime_ms": 34.13,
+      "config": {
+        "tile_size_l1": 8,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 8,
+        "enable_fusion": false,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "scalrep",
+          "fusion",
+          "tile",
+          "vectorize",
+          "coalescing",
+          "unroll"
+        ]
+      },
+      "flags": [
+        "-affine-scalrep",
+        "-affine-loop-tile=tile-size=8",
+        "-affine-super-vectorize=virtual-vector-size=8",
+        "-affine-loop-unroll=unroll-factor=8"
+      ]
+    },
+    {
+      "generation": 5,
+      "trial": 81,
+      "speedup": 15.409,
+      "runtime_ms": 29.203,
+      "config": {
+        "tile_size_l1": 64,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 8,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "fusion",
+          "scalrep",
+          "tile",
+          "coalescing",
+          "vectorize",
+          "unroll"
+        ]
+      },
+      "flags": [
+        "-affine-loop-fusion",
+        "-affine-scalrep",
+        "-affine-loop-tile=tile-size=64",
+        "-affine-super-vectorize=virtual-vector-size=8",
+        "-affine-loop-unroll=unroll-factor=8"
+      ]
+    },
+    {
+      "generation": 5,
+      "trial": 82,
+      "speedup": 14.99,
+      "runtime_ms": 30.02,
+      "config": {
+        "tile_size_l1": 8,
+        "tile_size_l2": 64,
+        "tile_size_k": 8,
+        "unroll_factor": 8,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "scalrep",
+          "fusion",
+          "tile",
+          "vectorize",
+          "coalescing",
+          "unroll"
+        ]
+      },
+      "flags": [
+        "-affine-scalrep",
+        "-affine-loop-fusion",
+        "-affine-loop-tile=tile-size=8",
+        "-affine-super-vectorize=virtual-vector-size=8",
+        "-affine-loop-unroll=unroll-factor=8"
+      ]
+    },
+    {
+      "generation": 5,
+      "trial": 83,
+      "speedup": 13.754,
+      "runtime_ms": 32.717,
+      "config": {
+        "tile_size_l1": 8,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 4,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "fusion",
+          "scalrep",
+          "tile",
+          "coalescing",
+          "vectorize",
+          "unroll"
+        ]
+      },
+      "flags": [
+        "-affine-loop-fusion",
+        "-affine-scalrep",
+        "-affine-loop-tile=tile-size=8",
+        "-affine-super-vectorize=virtual-vector-size=8",
+        "-affine-loop-unroll=unroll-factor=4"
+      ]
+    },
+    {
+      "generation": 5,
+      "trial": 84,
+      "speedup": 9.061,
+      "runtime_ms": 49.665,
+      "config": {
+        "tile_size_l1": 128,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 2,
+        "enable_fusion": true,
+        "enable_scalrep": false,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "vectorize",
+          "fusion",
+          "tile",
+          "scalrep",
+          "coalescing",
+          "unroll"
+        ]
+      },
+      "flags": [
+        "-affine-super-vectorize=virtual-vector-size=8",
+        "-affine-loop-fusion",
+        "-affine-loop-tile=tile-size=128",
+        "-affine-loop-unroll=unroll-factor=2"
+      ]
+    },
+    {
+      "generation": 5,
+      "trial": 85,
+      "speedup": 3.876,
+      "runtime_ms": 116.089,
+      "config": {
+        "tile_size_l1": 8,
+        "tile_size_l2": 64,
+        "tile_size_k": 128,
+        "unroll_factor": 8,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": true,
+        "enable_super_vectorize": true,
+        "vector_width": 128,
+        "pass_order": [
+          "scalrep",
+          "coalescing",
+          "tile",
+          "unroll",
+          "fusion",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-affine-scalrep",
+        "-affine-loop-coalescing",
+        "-affine-loop-tile=tile-size=8",
+        "-affine-loop-unroll=unroll-factor=8",
+        "-affine-loop-fusion",
+        "-affine-super-vectorize=virtual-vector-size=2"
+      ]
+    },
+    {
+      "generation": 5,
+      "trial": 86,
+      "speedup": 15.211,
+      "runtime_ms": 29.584,
+      "config": {
+        "tile_size_l1": 4,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 8,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "scalrep",
+          "fusion",
+          "tile",
+          "vectorize",
+          "coalescing",
+          "unroll"
+        ]
+      },
+      "flags": [
+        "-affine-scalrep",
+        "-affine-loop-fusion",
+        "-affine-loop-tile=tile-size=4",
+        "-affine-super-vectorize=virtual-vector-size=8",
+        "-affine-loop-unroll=unroll-factor=8"
+      ]
+    },
+    {
+      "generation": 5,
+      "trial": 87,
+      "speedup": 15.156,
+      "runtime_ms": 29.692,
+      "config": {
+        "tile_size_l1": 64,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 8,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "fusion",
+          "scalrep",
+          "tile",
+          "coalescing",
+          "vectorize",
+          "unroll"
+        ]
+      },
+      "flags": [
+        "-affine-loop-fusion",
+        "-affine-scalrep",
+        "-affine-loop-tile=tile-size=64",
+        "-affine-super-vectorize=virtual-vector-size=8",
+        "-affine-loop-unroll=unroll-factor=8"
+      ]
+    },
+    {
+      "generation": 5,
+      "trial": 88,
+      "speedup": 11.459,
+      "runtime_ms": 39.271,
+      "config": {
+        "tile_size_l1": 8,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 8,
+        "enable_fusion": true,
+        "enable_scalrep": false,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "scalrep",
+          "fusion",
+          "tile",
+          "vectorize",
+          "coalescing",
+          "unroll"
+        ]
+      },
+      "flags": [
+        "-affine-loop-fusion",
+        "-affine-loop-tile=tile-size=8",
+        "-affine-super-vectorize=virtual-vector-size=8",
+        "-affine-loop-unroll=unroll-factor=8"
+      ]
+    },
+    {
+      "generation": 5,
+      "trial": 89,
+      "speedup": 9.258,
+      "runtime_ms": 48.606,
+      "config": {
+        "tile_size_l1": 8,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 1,
+        "enable_fusion": false,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "fusion",
+          "scalrep",
+          "tile",
+          "coalescing",
+          "vectorize",
+          "unroll"
+        ]
+      },
+      "flags": [
+        "-affine-scalrep",
+        "-affine-loop-tile=tile-size=8",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "generation": 5,
+      "trial": 90,
+      "speedup": 3.318,
+      "runtime_ms": 135.61,
+      "config": {
+        "tile_size_l1": 256,
+        "tile_size_l2": 64,
+        "tile_size_k": 128,
+        "unroll_factor": 8,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "scalrep",
+          "coalescing",
+          "tile",
+          "unroll",
+          "fusion",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-affine-scalrep",
+        "-affine-loop-tile=tile-size=256",
+        "-affine-loop-unroll=unroll-factor=8",
+        "-affine-loop-fusion",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "generation": 5,
+      "trial": 91,
+      "speedup": 13.823,
+      "runtime_ms": 32.555,
+      "config": {
+        "tile_size_l1": 8,
+        "tile_size_l2": 64,
+        "tile_size_k": 8,
+        "unroll_factor": 4,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "scalrep",
+          "fusion",
+          "tile",
+          "vectorize",
+          "coalescing",
+          "unroll"
+        ]
+      },
+      "flags": [
+        "-affine-scalrep",
+        "-affine-loop-fusion",
+        "-affine-loop-tile=tile-size=8",
+        "-affine-super-vectorize=virtual-vector-size=8",
+        "-affine-loop-unroll=unroll-factor=4"
+      ]
+    },
+    {
+      "generation": 5,
+      "trial": 92,
+      "speedup": 9.076,
+      "runtime_ms": 49.581,
+      "config": {
+        "tile_size_l1": 8,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 1,
+        "enable_fusion": false,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "vectorize",
+          "fusion",
+          "tile",
+          "scalrep",
+          "coalescing",
+          "unroll"
+        ]
+      },
+      "flags": [
+        "-affine-super-vectorize=virtual-vector-size=8",
+        "-affine-loop-tile=tile-size=8",
+        "-affine-scalrep"
+      ]
+    },
+    {
+      "generation": 5,
+      "trial": 93,
+      "speedup": 5.769,
+      "runtime_ms": 77.999,
+      "config": {
+        "tile_size_l1": 64,
+        "tile_size_l2": 64,
+        "tile_size_k": 256,
+        "unroll_factor": 4,
+        "enable_fusion": true,
+        "enable_scalrep": false,
+        "enable_coalescing": true,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "scalrep",
+          "coalescing",
+          "tile",
+          "unroll",
+          "fusion",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-affine-loop-coalescing",
+        "-affine-loop-tile=tile-size=64",
+        "-affine-loop-unroll=unroll-factor=4",
+        "-affine-loop-fusion",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "generation": 5,
+      "trial": 94,
+      "speedup": 15.349,
+      "runtime_ms": 29.317,
+      "config": {
+        "tile_size_l1": 4,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 8,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "scalrep",
+          "fusion",
+          "tile",
+          "vectorize",
+          "coalescing",
+          "unroll"
+        ]
+      },
+      "flags": [
+        "-affine-scalrep",
+        "-affine-loop-fusion",
+        "-affine-loop-tile=tile-size=4",
+        "-affine-super-vectorize=virtual-vector-size=8",
+        "-affine-loop-unroll=unroll-factor=8"
+      ]
+    },
+    {
+      "generation": 5,
+      "trial": 95,
+      "speedup": 9.675,
+      "runtime_ms": 46.509,
+      "config": {
+        "tile_size_l1": 8,
+        "tile_size_l2": 64,
+        "tile_size_k": 64,
+        "unroll_factor": 8,
+        "enable_fusion": false,
+        "enable_scalrep": false,
+        "enable_coalescing": true,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "scalrep",
+          "coalescing",
+          "tile",
+          "unroll",
+          "fusion",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-affine-loop-coalescing",
+        "-affine-loop-tile=tile-size=8",
+        "-affine-loop-unroll=unroll-factor=8",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "generation": 5,
+      "trial": 96,
+      "speedup": 15.153,
+      "runtime_ms": 29.697,
+      "config": {
+        "tile_size_l1": 8,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 8,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "scalrep",
+          "fusion",
+          "tile",
+          "vectorize",
+          "coalescing",
+          "unroll"
+        ]
+      },
+      "flags": [
+        "-affine-scalrep",
+        "-affine-loop-fusion",
+        "-affine-loop-tile=tile-size=8",
+        "-affine-super-vectorize=virtual-vector-size=8",
+        "-affine-loop-unroll=unroll-factor=8"
+      ]
+    }
+  ],
+  "random_history": [
+    {
+      "trial": 0,
+      "speedup": 9.172,
+      "runtime_ms": 49.063,
+      "config": {
+        "tile_size_l1": 128,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 1,
+        "enable_fusion": false,
+        "enable_scalrep": true,
+        "enable_coalescing": true,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=128",
+        "-affine-scalrep",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "trial": 1,
+      "speedup": 2.701,
+      "runtime_ms": 166.633,
+      "config": {
+        "tile_size_l1": 4,
+        "tile_size_l2": 64,
+        "tile_size_k": 128,
+        "unroll_factor": 16,
+        "enable_fusion": true,
+        "enable_scalrep": false,
+        "enable_coalescing": true,
+        "enable_super_vectorize": true,
+        "vector_width": 128,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=4",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=16",
+        "-affine-super-vectorize=virtual-vector-size=2"
+      ]
+    },
+    {
+      "trial": 2,
+      "speedup": 7.051,
+      "runtime_ms": 63.821,
+      "config": {
+        "tile_size_l1": 8,
+        "tile_size_l2": 64,
+        "tile_size_k": 8,
+        "unroll_factor": 16,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 256,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=8",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=16",
+        "-affine-scalrep",
+        "-affine-super-vectorize=virtual-vector-size=4"
+      ]
+    },
+    {
+      "trial": 3,
+      "speedup": 1.153,
+      "runtime_ms": 390.36,
+      "config": {
+        "tile_size_l1": 64,
+        "tile_size_l2": 64,
+        "tile_size_k": 16,
+        "unroll_factor": 1,
+        "enable_fusion": true,
+        "enable_scalrep": false,
+        "enable_coalescing": false,
+        "enable_super_vectorize": false,
+        "vector_width": 128,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=64",
+        "-affine-loop-fusion"
+      ]
+    },
+    {
+      "trial": 4,
+      "speedup": 3.928,
+      "runtime_ms": 114.563,
+      "config": {
+        "tile_size_l1": 8,
+        "tile_size_l2": 64,
+        "tile_size_k": 256,
+        "unroll_factor": 4,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 256,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=8",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=4",
+        "-affine-scalrep",
+        "-affine-super-vectorize=virtual-vector-size=4"
+      ]
+    },
+    {
+      "trial": 5,
+      "speedup": 3.507,
+      "runtime_ms": 128.314,
+      "config": {
+        "tile_size_l1": 256,
+        "tile_size_l2": 64,
+        "tile_size_k": 16,
+        "unroll_factor": 16,
+        "enable_fusion": false,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 256,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=256",
+        "-affine-loop-unroll=unroll-factor=16",
+        "-affine-scalrep",
+        "-affine-super-vectorize=virtual-vector-size=4"
+      ]
+    },
+    {
+      "trial": 6,
+      "speedup": 12.038,
+      "runtime_ms": 37.382,
+      "config": {
+        "tile_size_l1": 4,
+        "tile_size_l2": 64,
+        "tile_size_k": 64,
+        "unroll_factor": 4,
+        "enable_fusion": false,
+        "enable_scalrep": true,
+        "enable_coalescing": true,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=4",
+        "-affine-loop-unroll=unroll-factor=4",
+        "-affine-scalrep",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "trial": 7,
+      "speedup": 1.082,
+      "runtime_ms": 415.845,
+      "config": {
+        "tile_size_l1": 8,
+        "tile_size_l2": 64,
+        "tile_size_k": 256,
+        "unroll_factor": 4,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": true,
+        "enable_super_vectorize": false,
+        "vector_width": 256,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=8",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=4",
+        "-affine-scalrep"
+      ]
+    },
+    {
+      "trial": 8,
+      "speedup": 5.757,
+      "runtime_ms": 78.165,
+      "config": {
+        "tile_size_l1": 32,
+        "tile_size_l2": 64,
+        "tile_size_k": 128,
+        "unroll_factor": 4,
+        "enable_fusion": true,
+        "enable_scalrep": false,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=32",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=4",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "trial": 9,
+      "speedup": 0.872,
+      "runtime_ms": 516.345,
+      "config": {
+        "tile_size_l1": 16,
+        "tile_size_l2": 64,
+        "tile_size_k": 128,
+        "unroll_factor": 1,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": true,
+        "enable_super_vectorize": false,
+        "vector_width": 256,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=16",
+        "-affine-loop-fusion",
+        "-affine-scalrep"
+      ]
+    },
+    {
+      "trial": 10,
+      "speedup": 1.465,
+      "runtime_ms": 307.069,
+      "config": {
+        "tile_size_l1": 16,
+        "tile_size_l2": 64,
+        "tile_size_k": 128,
+        "unroll_factor": 16,
+        "enable_fusion": true,
+        "enable_scalrep": false,
+        "enable_coalescing": true,
+        "enable_super_vectorize": true,
+        "vector_width": 128,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=16",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=16",
+        "-affine-super-vectorize=virtual-vector-size=2"
+      ]
+    },
+    {
+      "trial": 11,
+      "speedup": 1.102,
+      "runtime_ms": 408.239,
+      "config": {
+        "tile_size_l1": 256,
+        "tile_size_l2": 64,
+        "tile_size_k": 16,
+        "unroll_factor": 8,
+        "enable_fusion": false,
+        "enable_scalrep": true,
+        "enable_coalescing": true,
+        "enable_super_vectorize": false,
+        "vector_width": 128,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=256",
+        "-affine-loop-unroll=unroll-factor=8",
+        "-affine-scalrep"
+      ]
+    },
+    {
+      "trial": 12,
+      "speedup": 1.87,
+      "runtime_ms": 240.616,
+      "config": {
+        "tile_size_l1": 128,
+        "tile_size_l2": 64,
+        "tile_size_k": 32,
+        "unroll_factor": 8,
+        "enable_fusion": false,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 128,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=128",
+        "-affine-loop-unroll=unroll-factor=8",
+        "-affine-scalrep",
+        "-affine-super-vectorize=virtual-vector-size=2"
+      ]
+    },
+    {
+      "trial": 13,
+      "speedup": 0.755,
+      "runtime_ms": 596.345,
+      "config": {
+        "tile_size_l1": 128,
+        "tile_size_l2": 64,
+        "tile_size_k": 64,
+        "unroll_factor": 16,
+        "enable_fusion": false,
+        "enable_scalrep": false,
+        "enable_coalescing": false,
+        "enable_super_vectorize": false,
+        "vector_width": 128,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=128",
+        "-affine-loop-unroll=unroll-factor=16"
+      ]
+    },
+    {
+      "trial": 14,
+      "speedup": 15.045,
+      "runtime_ms": 29.911,
+      "config": {
+        "tile_size_l1": 8,
+        "tile_size_l2": 64,
+        "tile_size_k": 64,
+        "unroll_factor": 8,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": true,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=8",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=8",
+        "-affine-scalrep",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "trial": 15,
+      "speedup": 0.921,
+      "runtime_ms": 488.764,
+      "config": {
+        "tile_size_l1": 8,
+        "tile_size_l2": 64,
+        "tile_size_k": 256,
+        "unroll_factor": 8,
+        "enable_fusion": true,
+        "enable_scalrep": false,
+        "enable_coalescing": false,
+        "enable_super_vectorize": false,
+        "vector_width": 512,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=8",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=8"
+      ]
+    },
+    {
+      "trial": 16,
+      "speedup": 3.94,
+      "runtime_ms": 114.201,
+      "config": {
+        "tile_size_l1": 16,
+        "tile_size_l2": 64,
+        "tile_size_k": 64,
+        "unroll_factor": 1,
+        "enable_fusion": true,
+        "enable_scalrep": false,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 256,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=16",
+        "-affine-loop-fusion",
+        "-affine-super-vectorize=virtual-vector-size=4"
+      ]
+    },
+    {
+      "trial": 17,
+      "speedup": 11.337,
+      "runtime_ms": 39.692,
+      "config": {
+        "tile_size_l1": 32,
+        "tile_size_l2": 64,
+        "tile_size_k": 8,
+        "unroll_factor": 8,
+        "enable_fusion": true,
+        "enable_scalrep": false,
+        "enable_coalescing": true,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=32",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=8",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "trial": 18,
+      "speedup": 8.159,
+      "runtime_ms": 55.153,
+      "config": {
+        "tile_size_l1": 16,
+        "tile_size_l2": 64,
+        "tile_size_k": 256,
+        "unroll_factor": 16,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=16",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=16",
+        "-affine-scalrep",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "trial": 19,
+      "speedup": 1.886,
+      "runtime_ms": 238.606,
+      "config": {
+        "tile_size_l1": 256,
+        "tile_size_l2": 64,
+        "tile_size_k": 64,
+        "unroll_factor": 1,
+        "enable_fusion": false,
+        "enable_scalrep": false,
+        "enable_coalescing": true,
+        "enable_super_vectorize": true,
+        "vector_width": 256,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=256",
+        "-affine-super-vectorize=virtual-vector-size=4"
+      ]
+    },
+    {
+      "trial": 20,
+      "speedup": 0.753,
+      "runtime_ms": 597.84,
+      "config": {
+        "tile_size_l1": 256,
+        "tile_size_l2": 64,
+        "tile_size_k": 256,
+        "unroll_factor": 4,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": true,
+        "enable_super_vectorize": true,
+        "vector_width": 128,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=256",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=4",
+        "-affine-scalrep",
+        "-affine-super-vectorize=virtual-vector-size=2"
+      ]
+    },
+    {
+      "trial": 21,
+      "speedup": 2.939,
+      "runtime_ms": 153.11,
+      "config": {
+        "tile_size_l1": 128,
+        "tile_size_l2": 64,
+        "tile_size_k": 32,
+        "unroll_factor": 1,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 256,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=128",
+        "-affine-loop-fusion",
+        "-affine-scalrep",
+        "-affine-super-vectorize=virtual-vector-size=4"
+      ]
+    },
+    {
+      "trial": 22,
+      "speedup": 1.012,
+      "runtime_ms": 444.641,
+      "config": {
+        "tile_size_l1": 64,
+        "tile_size_l2": 64,
+        "tile_size_k": 256,
+        "unroll_factor": 16,
+        "enable_fusion": false,
+        "enable_scalrep": true,
+        "enable_coalescing": true,
+        "enable_super_vectorize": false,
+        "vector_width": 256,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=64",
+        "-affine-loop-unroll=unroll-factor=16",
+        "-affine-scalrep"
+      ]
+    },
+    {
+      "trial": 23,
+      "speedup": 1.243,
+      "runtime_ms": 361.904,
+      "config": {
+        "tile_size_l1": 128,
+        "tile_size_l2": 64,
+        "tile_size_k": 128,
+        "unroll_factor": 4,
+        "enable_fusion": false,
+        "enable_scalrep": false,
+        "enable_coalescing": true,
+        "enable_super_vectorize": true,
+        "vector_width": 128,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=128",
+        "-affine-loop-unroll=unroll-factor=4",
+        "-affine-super-vectorize=virtual-vector-size=2"
+      ]
+    },
+    {
+      "trial": 24,
+      "speedup": 10.658,
+      "runtime_ms": 42.221,
+      "config": {
+        "tile_size_l1": 4,
+        "tile_size_l2": 64,
+        "tile_size_k": 16,
+        "unroll_factor": 1,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": true,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=4",
+        "-affine-loop-fusion",
+        "-affine-scalrep",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "trial": 25,
+      "speedup": 12.457,
+      "runtime_ms": 36.126,
+      "config": {
+        "tile_size_l1": 128,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 2,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=128",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=2",
+        "-affine-scalrep",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "trial": 26,
+      "speedup": 7.623,
+      "runtime_ms": 59.029,
+      "config": {
+        "tile_size_l1": 8,
+        "tile_size_l2": 64,
+        "tile_size_k": 16,
+        "unroll_factor": 8,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 256,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=8",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=8",
+        "-affine-scalrep",
+        "-affine-super-vectorize=virtual-vector-size=4"
+      ]
+    },
+    {
+      "trial": 27,
+      "speedup": 0.964,
+      "runtime_ms": 466.946,
+      "config": {
+        "tile_size_l1": 256,
+        "tile_size_l2": 64,
+        "tile_size_k": 32,
+        "unroll_factor": 2,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": false,
+        "vector_width": 256,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=256",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=2",
+        "-affine-scalrep"
+      ]
+    },
+    {
+      "trial": 28,
+      "speedup": 1.554,
+      "runtime_ms": 289.515,
+      "config": {
+        "tile_size_l1": 32,
+        "tile_size_l2": 64,
+        "tile_size_k": 32,
+        "unroll_factor": 1,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": false,
+        "vector_width": 128,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=32",
+        "-affine-loop-fusion",
+        "-affine-scalrep"
+      ]
+    },
+    {
+      "trial": 29,
+      "speedup": 5.279,
+      "runtime_ms": 85.239,
+      "config": {
+        "tile_size_l1": 8,
+        "tile_size_l2": 64,
+        "tile_size_k": 8,
+        "unroll_factor": 2,
+        "enable_fusion": false,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 256,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=8",
+        "-affine-loop-unroll=unroll-factor=2",
+        "-affine-scalrep",
+        "-affine-super-vectorize=virtual-vector-size=4"
+      ]
+    },
+    {
+      "trial": 30,
+      "speedup": 2.304,
+      "runtime_ms": 195.278,
+      "config": {
+        "tile_size_l1": 32,
+        "tile_size_l2": 64,
+        "tile_size_k": 8,
+        "unroll_factor": 1,
+        "enable_fusion": false,
+        "enable_scalrep": true,
+        "enable_coalescing": true,
+        "enable_super_vectorize": true,
+        "vector_width": 128,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=32",
+        "-affine-scalrep",
+        "-affine-super-vectorize=virtual-vector-size=2"
+      ]
+    },
+    {
+      "trial": 31,
+      "speedup": 0.291,
+      "runtime_ms": 1547.138,
+      "config": {
+        "tile_size_l1": 256,
+        "tile_size_l2": 64,
+        "tile_size_k": 256,
+        "unroll_factor": 2,
+        "enable_fusion": true,
+        "enable_scalrep": false,
+        "enable_coalescing": false,
+        "enable_super_vectorize": false,
+        "vector_width": 128,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=256",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=2"
+      ]
+    },
+    {
+      "trial": 32,
+      "speedup": 0.633,
+      "runtime_ms": 710.892,
+      "config": {
+        "tile_size_l1": 256,
+        "tile_size_l2": 64,
+        "tile_size_k": 32,
+        "unroll_factor": 1,
+        "enable_fusion": true,
+        "enable_scalrep": false,
+        "enable_coalescing": true,
+        "enable_super_vectorize": false,
+        "vector_width": 256,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=256",
+        "-affine-loop-fusion"
+      ]
+    },
+    {
+      "trial": 33,
+      "speedup": 0.557,
+      "runtime_ms": 808.38,
+      "config": {
+        "tile_size_l1": 256,
+        "tile_size_l2": 64,
+        "tile_size_k": 256,
+        "unroll_factor": 8,
+        "enable_fusion": false,
+        "enable_scalrep": false,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 128,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=256",
+        "-affine-loop-unroll=unroll-factor=8",
+        "-affine-super-vectorize=virtual-vector-size=2"
+      ]
+    },
+    {
+      "trial": 34,
+      "speedup": 7.825,
+      "runtime_ms": 57.511,
+      "config": {
+        "tile_size_l1": 16,
+        "tile_size_l2": 64,
+        "tile_size_k": 8,
+        "unroll_factor": 1,
+        "enable_fusion": true,
+        "enable_scalrep": false,
+        "enable_coalescing": true,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=16",
+        "-affine-loop-fusion",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "trial": 35,
+      "speedup": 1.955,
+      "runtime_ms": 230.213,
+      "config": {
+        "tile_size_l1": 32,
+        "tile_size_l2": 64,
+        "tile_size_k": 64,
+        "unroll_factor": 16,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": true,
+        "enable_super_vectorize": true,
+        "vector_width": 128,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=32",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=16",
+        "-affine-scalrep",
+        "-affine-super-vectorize=virtual-vector-size=2"
+      ]
+    },
+    {
+      "trial": 36,
+      "speedup": 10.395,
+      "runtime_ms": 43.292,
+      "config": {
+        "tile_size_l1": 64,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 2,
+        "enable_fusion": false,
+        "enable_scalrep": true,
+        "enable_coalescing": true,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=64",
+        "-affine-loop-unroll=unroll-factor=2",
+        "-affine-scalrep",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "trial": 37,
+      "speedup": 1.409,
+      "runtime_ms": 319.392,
+      "config": {
+        "tile_size_l1": 4,
+        "tile_size_l2": 64,
+        "tile_size_k": 32,
+        "unroll_factor": 16,
+        "enable_fusion": false,
+        "enable_scalrep": false,
+        "enable_coalescing": true,
+        "enable_super_vectorize": false,
+        "vector_width": 128,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=4",
+        "-affine-loop-unroll=unroll-factor=16"
+      ]
+    },
+    {
+      "trial": 38,
+      "speedup": 1.943,
+      "runtime_ms": 231.628,
+      "config": {
+        "tile_size_l1": 16,
+        "tile_size_l2": 64,
+        "tile_size_k": 32,
+        "unroll_factor": 2,
+        "enable_fusion": false,
+        "enable_scalrep": false,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 128,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=16",
+        "-affine-loop-unroll=unroll-factor=2",
+        "-affine-super-vectorize=virtual-vector-size=2"
+      ]
+    },
+    {
+      "trial": 39,
+      "speedup": 1.166,
+      "runtime_ms": 385.871,
+      "config": {
+        "tile_size_l1": 32,
+        "tile_size_l2": 64,
+        "tile_size_k": 64,
+        "unroll_factor": 16,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": true,
+        "enable_super_vectorize": false,
+        "vector_width": 128,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=32",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=16",
+        "-affine-scalrep"
+      ]
+    },
+    {
+      "trial": 40,
+      "speedup": 1.17,
+      "runtime_ms": 384.717,
+      "config": {
+        "tile_size_l1": 16,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 2,
+        "enable_fusion": false,
+        "enable_scalrep": false,
+        "enable_coalescing": true,
+        "enable_super_vectorize": false,
+        "vector_width": 512,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=16",
+        "-affine-loop-unroll=unroll-factor=2"
+      ]
+    },
+    {
+      "trial": 41,
+      "speedup": 2.855,
+      "runtime_ms": 157.616,
+      "config": {
+        "tile_size_l1": 128,
+        "tile_size_l2": 64,
+        "tile_size_k": 16,
+        "unroll_factor": 16,
+        "enable_fusion": true,
+        "enable_scalrep": false,
+        "enable_coalescing": true,
+        "enable_super_vectorize": true,
+        "vector_width": 256,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=128",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=16",
+        "-affine-super-vectorize=virtual-vector-size=4"
+      ]
+    },
+    {
+      "trial": 42,
+      "speedup": 10.744,
+      "runtime_ms": 41.885,
+      "config": {
+        "tile_size_l1": 4,
+        "tile_size_l2": 64,
+        "tile_size_k": 4,
+        "unroll_factor": 16,
+        "enable_fusion": true,
+        "enable_scalrep": false,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=4",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=16",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "trial": 43,
+      "speedup": 9.02,
+      "runtime_ms": 49.892,
+      "config": {
+        "tile_size_l1": 16,
+        "tile_size_l2": 64,
+        "tile_size_k": 8,
+        "unroll_factor": 4,
+        "enable_fusion": false,
+        "enable_scalrep": false,
+        "enable_coalescing": true,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=16",
+        "-affine-loop-unroll=unroll-factor=4",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "trial": 44,
+      "speedup": 7.752,
+      "runtime_ms": 58.05,
+      "config": {
+        "tile_size_l1": 32,
+        "tile_size_l2": 64,
+        "tile_size_k": 256,
+        "unroll_factor": 4,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=32",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=4",
+        "-affine-scalrep",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "trial": 45,
+      "speedup": 13.354,
+      "runtime_ms": 33.699,
+      "config": {
+        "tile_size_l1": 16,
+        "tile_size_l2": 64,
+        "tile_size_k": 8,
+        "unroll_factor": 8,
+        "enable_fusion": false,
+        "enable_scalrep": true,
+        "enable_coalescing": true,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=16",
+        "-affine-loop-unroll=unroll-factor=8",
+        "-affine-scalrep",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    },
+    {
+      "trial": 46,
+      "speedup": 2.315,
+      "runtime_ms": 194.412,
+      "config": {
+        "tile_size_l1": 8,
+        "tile_size_l2": 64,
+        "tile_size_k": 64,
+        "unroll_factor": 1,
+        "enable_fusion": false,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 128,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=8",
+        "-affine-scalrep",
+        "-affine-super-vectorize=virtual-vector-size=2"
+      ]
+    },
+    {
+      "trial": 47,
+      "speedup": 4.486,
+      "runtime_ms": 100.306,
+      "config": {
+        "tile_size_l1": 16,
+        "tile_size_l2": 64,
+        "tile_size_k": 16,
+        "unroll_factor": 1,
+        "enable_fusion": false,
+        "enable_scalrep": true,
+        "enable_coalescing": true,
+        "enable_super_vectorize": true,
+        "vector_width": 256,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=16",
+        "-affine-scalrep",
+        "-affine-super-vectorize=virtual-vector-size=4"
+      ]
+    },
+    {
+      "trial": 48,
+      "speedup": 4.216,
+      "runtime_ms": 106.734,
+      "config": {
+        "tile_size_l1": 256,
+        "tile_size_l2": 64,
+        "tile_size_k": 64,
+        "unroll_factor": 8,
+        "enable_fusion": true,
+        "enable_scalrep": true,
+        "enable_coalescing": true,
+        "enable_super_vectorize": true,
+        "vector_width": 256,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=256",
+        "-affine-loop-fusion",
+        "-affine-loop-unroll=unroll-factor=8",
+        "-affine-scalrep",
+        "-affine-super-vectorize=virtual-vector-size=4"
+      ]
+    },
+    {
+      "trial": 49,
+      "speedup": 11.828,
+      "runtime_ms": 38.044,
+      "config": {
+        "tile_size_l1": 4,
+        "tile_size_l2": 64,
+        "tile_size_k": 8,
+        "unroll_factor": 4,
+        "enable_fusion": false,
+        "enable_scalrep": true,
+        "enable_coalescing": false,
+        "enable_super_vectorize": true,
+        "vector_width": 512,
+        "pass_order": [
+          "canonicalize",
+          "cse",
+          "mem2reg",
+          "tile",
+          "fusion",
+          "unroll",
+          "scalrep",
+          "vectorize"
+        ]
+      },
+      "flags": [
+        "-canonicalize",
+        "-cse",
+        "-mem2reg",
+        "-affine-loop-tile=tile-size=4",
+        "-affine-loop-unroll=unroll-factor=4",
+        "-affine-scalrep",
+        "-affine-super-vectorize=virtual-vector-size=8"
+      ]
+    }
+  ]
+}

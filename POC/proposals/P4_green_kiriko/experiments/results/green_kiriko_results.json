@@ -1,0 +1,120 @@
+{
+  "benchmark_results": [
+    {
+      "toolchain": "Clang -O0",
+      "runtime_ms": 3600.0,
+      "power_watts": 63.13,
+      "energy_joules": 227.2612,
+      "pkg_energy_joules": 151.6612,
+      "dram_energy_joules": 75.6,
+      "edp": 818.14032,
+      "ed2p": 2945.305152,
+      "energy_savings_pct": 0.0,
+      "roofline": {
+        "arithmetic_intensity_flops_per_byte": 0.08,
+        "achieved_gflops": 0.6,
+        "theoretical_ceiling_gflops": 5.67,
+        "hardware_efficiency_pct": 10.5,
+        "limiting_factor": "Memory Bandwidth",
+        "ridge_point": 5.15
+      }
+    },
+    {
+      "toolchain": "Clang -O3",
+      "runtime_ms": 1640.0,
+      "power_watts": 91.0,
+      "energy_joules": 149.24,
+      "pkg_energy_joules": 120.704,
+      "dram_energy_joules": 28.536,
+      "edp": 244.7536,
+      "ed2p": 401.395904,
+      "energy_savings_pct": 34.3,
+      "roofline": {
+        "arithmetic_intensity_flops_per_byte": 0.21,
+        "achieved_gflops": 1.31,
+        "theoretical_ceiling_gflops": 14.17,
+        "hardware_efficiency_pct": 9.2,
+        "limiting_factor": "Memory Bandwidth",
+        "ridge_point": 5.15
+      }
+    },
+    {
+      "toolchain": "LLVM Polly",
+      "runtime_ms": 133.0,
+      "power_watts": 104.91,
+      "energy_joules": 13.9524,
+      "pkg_energy_joules": 12.2127,
+      "dram_energy_joules": 1.7396,
+      "edp": 1.855669,
+      "ed2p": 0.246804,
+      "energy_savings_pct": 93.9,
+      "roofline": {
+        "arithmetic_intensity_flops_per_byte": 1.0,
+        "achieved_gflops": 16.15,
+        "theoretical_ceiling_gflops": 68.0,
+        "hardware_efficiency_pct": 23.7,
+        "limiting_factor": "Memory Bandwidth",
+        "ridge_point": 5.15
+      }
+    },
+    {
+      "toolchain": "MLIR Affine (Static)",
+      "runtime_ms": 3710.0,
+      "power_watts": 66.66,
+      "energy_joules": 247.2901,
+      "pkg_energy_joules": 165.3733,
+      "dram_energy_joules": 81.9168,
+      "edp": 917.446271,
+      "ed2p": 3403.72566541,
+      "energy_savings_pct": -8.8,
+      "roofline": {
+        "arithmetic_intensity_flops_per_byte": 0.08,
+        "achieved_gflops": 0.58,
+        "theoretical_ceiling_gflops": 5.31,
+        "hardware_efficiency_pct": 10.9,
+        "limiting_factor": "Memory Bandwidth",
+        "ridge_point": 5.15
+      }
+    },
+    {
+      "toolchain": "Green-Kiriko (Tuned)",
+      "runtime_ms": 195.0,
+      "power_watts": 137.17,
+      "energy_joules": 26.7482,
+      "pkg_energy_joules": 24.2678,
+      "dram_energy_joules": 2.4804,
+      "edp": 5.215899,
+      "ed2p": 1.01710031,
+      "energy_savings_pct": 88.2,
+      "roofline": {
+        "arithmetic_intensity_flops_per_byte": 1.39,
+        "achieved_gflops": 11.01,
+        "theoretical_ceiling_gflops": 94.44,
+        "hardware_efficiency_pct": 11.7,
+        "limiting_factor": "Memory Bandwidth",
+        "ridge_point": 5.15
+      }
+    }
+  ],
+  "pareto_frontier": [
+    {
+      "toolchain": "LLVM Polly",
+      "runtime_ms": 133.0,
+      "power_watts": 104.91,
+      "energy_joules": 13.9524,
+      "pkg_energy_joules": 12.2127,
+      "dram_energy_joules": 1.7396,
+      "edp": 1.855669,
+      "ed2p": 0.246804,
+      "energy_savings_pct": 93.9,
+      "roofline": {
+        "arithmetic_intensity_flops_per_byte": 1.0,
+        "achieved_gflops": 16.15,
+        "theoretical_ceiling_gflops": 68.0,
+        "hardware_efficiency_pct": 23.7,
+        "limiting_factor": "Memory Bandwidth",
+        "ridge_point": 5.15
+      }
+    }
+  ]
+}

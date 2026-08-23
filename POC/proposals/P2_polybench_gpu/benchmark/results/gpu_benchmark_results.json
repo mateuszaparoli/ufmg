@@ -1,0 +1,62 @@
+[
+  {
+    "matrix_size": 128,
+    "cpu_time_ms": 0.028,
+    "gpu_kernel_ms": 0.006,
+    "gpu_pcie_ms": 0.006,
+    "total_gpu_ms": 0.012,
+    "speedup_kernel_only": 4.66,
+    "speedup_end_to_end": 2.33,
+    "gflops": 687.2
+  },
+  {
+    "matrix_size": 256,
+    "cpu_time_ms": 0.224,
+    "gpu_kernel_ms": 0.014,
+    "gpu_pcie_ms": 0.025,
+    "total_gpu_ms": 0.038,
+    "speedup_kernel_only": 15.98,
+    "speedup_end_to_end": 5.89,
+    "gflops": 2426.2
+  },
+  {
+    "matrix_size": 512,
+    "cpu_time_ms": 1.79,
+    "gpu_kernel_ms": 0.076,
+    "gpu_pcie_ms": 0.098,
+    "total_gpu_ms": 0.174,
+    "speedup_kernel_only": 23.55,
+    "speedup_end_to_end": 10.28,
+    "gflops": 3548.8
+  },
+  {
+    "matrix_size": 1024,
+    "cpu_time_ms": 14.317,
+    "gpu_kernel_ms": 0.57,
+    "gpu_pcie_ms": 0.393,
+    "total_gpu_ms": 0.963,
+    "speedup_kernel_only": 25.12,
+    "speedup_end_to_end": 14.87,
+    "gflops": 3766.7
+  },
+  {
+    "matrix_size": 2048,
+    "cpu_time_ms": 114.532,
+    "gpu_kernel_ms": 4.526,
+    "gpu_pcie_ms": 1.573,
+    "total_gpu_ms": 6.099,
+    "speedup_kernel_only": 25.31,
+    "speedup_end_to_end": 18.78,
+    "gflops": 3795.8
+  },
+  {
+    "matrix_size": 4096,
+    "cpu_time_ms": 916.26,
+    "gpu_kernel_ms": 36.173,
+    "gpu_pcie_ms": 6.291,
+    "total_gpu_ms": 42.465,
+    "speedup_kernel_only": 25.33,
+    "speedup_end_to_end": 21.58,
+    "gflops": 3799.5
+  }
+]

@@ -1,0 +1,52 @@
+[
+  {
+    "kernel": "gemm",
+    "loop_nest_depth": 3,
+    "affine_compile_time_ms": 23.26,
+    "linalg_compile_time_ms": 11.62,
+    "compilation_speedup_linalg": 2.0,
+    "affine_speedup": 10.0,
+    "linalg_speedup": 10.3,
+    "speedup_delta": 0.3
+  },
+  {
+    "kernel": "2mm",
+    "loop_nest_depth": 4,
+    "affine_compile_time_ms": 40.17,
+    "linalg_compile_time_ms": 12.95,
+    "compilation_speedup_linalg": 3.1,
+    "affine_speedup": 10.5,
+    "linalg_speedup": 10.7,
+    "speedup_delta": 0.2
+  },
+  {
+    "kernel": "3mm",
+    "loop_nest_depth": 6,
+    "affine_compile_time_ms": 131.29,
+    "linalg_compile_time_ms": 15.55,
+    "compilation_speedup_linalg": 8.44,
+    "affine_speedup": 11.5,
+    "linalg_speedup": 11.5,
+    "speedup_delta": 0.0
+  },
+  {
+    "kernel": "stencil2d",
+    "loop_nest_depth": 2,
+    "affine_compile_time_ms": 12.78,
+    "linalg_compile_time_ms": 10.5,
+    "compilation_speedup_linalg": 1.22,
+    "affine_speedup": 9.5,
+    "linalg_speedup": 9.9,
+    "speedup_delta": 0.4
+  },
+  {
+    "kernel": "doitgen",
+    "loop_nest_depth": 4,
+    "affine_compile_time_ms": 40.75,
+    "linalg_compile_time_ms": 12.56,
+    "compilation_speedup_linalg": 3.24,
+    "affine_speedup": 10.5,
+    "linalg_speedup": 10.7,
+    "speedup_delta": 0.2
+  }
+]
